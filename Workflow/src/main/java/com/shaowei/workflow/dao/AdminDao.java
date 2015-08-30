@@ -7,28 +7,29 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import com.shaowei.workflow.model.Trader;
+import com.shaowei.workflow.model.Admin;
+
 
 @Repository
-public class TraderDao extends BaseDao<Trader> {
+public class AdminDao extends BaseDao<Admin> {
 
-	public TraderDao() {
-		super(Trader.class);
+	public AdminDao() {
+		super(Admin.class);
 	}
 
-	public Trader getTraderByName(String name) {
+	public Admin getAdminByName(String name) {
 		Session session = super.getHibernateTemplate().getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-		Criteria criteria = session.createCriteria(Trader.class);
-		criteria.add(Restrictions.eq("traderName", name));
+		Criteria criteria = session.createCriteria(Admin.class);
+		criteria.add(Restrictions.eq("adminName", name));
 
 		@SuppressWarnings("unchecked")
-		List<Trader> traders = criteria.list();
+		List<Admin> admins = criteria.list();
 		session.getTransaction().commit();
-		if (traders==null || traders.size()==0)
+		if (admins==null || admins.size()==0)
 			return null;
 		else
-			return traders.get(0);
+			return admins.get(0);
 	}
 
 }

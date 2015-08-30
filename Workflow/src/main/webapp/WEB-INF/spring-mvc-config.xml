@@ -10,20 +10,23 @@
         http://www.springframework.org/schema/context 
         http://www.springframework.org/schema/context/spring-context.xsd ">
  
-	<context:component-scan base-package="com.mkyong.workflow.controller" />
+	<context:component-scan base-package="com.shaowei.workflow.controller" />
 	<mvc:annotation-driven />
+	
+	<mvc:resources mapping="/scriptLibrary/**" location="/scriptLibrary/" />
+	<mvc:resources mapping="/styleSheet/**" location="/styleSheet/" />
  
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
-		<property name="prefix" value="/pages/views/" />
+		<property name="prefix" value="/pages/" />
  		<property name="suffix" value=".jsp" />
 
 	</bean>
 	
-	<bean name="login" class="com.shaowei.workflow.controller.Login"></bean>
- 
-	<mvc:resources mapping="/scriptLibrary/**" location="/scriptLibrary/" />
-	<mvc:resources mapping="/styleSheet/**" location="/styleSheet/" />
+<!-- 	<bean name="login" class="com.shaowei.workflow.controller.Login"></bean> -->
+<!-- 	<bean name="create" class="com.shaowei.workflow.controller.UserController"></bean>
+ 	<bean name="document" class="com.shaowei.workflow.controller.Document"></bean> -->
+
 
 	 
 

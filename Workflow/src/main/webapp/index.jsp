@@ -26,8 +26,10 @@
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
           <h1 class="text-center">Login</h1>
       </div>
+      
+      
       <div class="modal-body">
-          <form class="form col-md-12 center-block" action="login">
+          <form class="form col-md-12 center-block" action="admin/login" method="post">
             <div class="form-group">
               <input type="text" class="form-control input-lg" placeholder="Username" name="username">
             </div>
@@ -40,6 +42,8 @@
             </div>
           </form>
       </div>
+      
+      
       <div class="modal-footer">
           <div class="col-md-12">
           <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
@@ -49,7 +53,12 @@
   </div>
 </div>
 	<!-- script references -->
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-		<script src="/js/bootstrap.min.js"></script>
+<!-- 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+		<script src="/js/bootstrap.min.js"></script> -->
+			<!-- jQuery -->
+ 	<script src="/Workflow/scriptLibrary/jquery/jquery-1.11.1.js"></script>
+ 
+	<!-- Bootstrap Core JavaScript -->
+	<script src="/Workflow/scriptLibrary/bootstrap/js/bootstrap.min.js"></script>
 	</body>
 </html>

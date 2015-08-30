@@ -13,19 +13,25 @@
     <title>SB Admin 2 - Bootstrap Admin Theme</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="scriptLibrary/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/Workflow/scriptLibrary/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
    
     <!-- DataTables CSS -->
-    <link href="scriptLibrary/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="/Workflow/scriptLibrary/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
 
     <!-- DataTables Responsive CSS -->
-    <link href="scriptLibrary/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
+    <link href="/Workflow/scriptLibrary/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
+    
+    <!-- MetisMenu CSS -->
+    <link href="/Workflow/scriptLibrary/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+    
+    <!-- Custom Fonts -->
+    <link href="/Workflow/styleSheet/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- Custom CSS -->
-    <link href="styleSheet/sb-admin-2.css" rel="stylesheet">
+    <link href="/Workflow/styleSheet/sb-admin-2.css" rel="stylesheet">
 
-    <link href="styleSheet/general.css" rel="stylesheet" type="text/css">
+    <link href="/Workflow/styleSheet/general.css" rel="stylesheet" type="text/css">
     
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -36,6 +42,7 @@
     <![endif]-->
 
 </head>
+
 
 <body>
 
@@ -268,14 +275,14 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                        
-						<li><a href="admin.action"><i class="fa fa-home fa-fw"></i> Welcome</a></li>
-						<li><a href="getAllCourses.action"><i class="fa fa-book fa-fw"></i> Courses<span class="fa arrow"></span></a>
+						<li><a href="welcome"><i class="fa fa-home fa-fw"></i> Welcome</a></li>
+						<li><a href="#"><i class="fa fa-group fa-fw"></i> Users<span class="fa arrow"></span></a>
 						    <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="getAllCoursesAdminT.action"><i class="fa fa-table fa-fw"></i> Tables</a>
+                                    <a href="create"><i class="fa fa-plus fa-fw"></i> Create</a>
                                 </li>
                                 <li>
-                                    <a href="getAllCoursesAdminG.action"><i class="fa fa-picture-o fa-fw"></i> Graphics</a>
+                                    <a href="list"><i class="fa fa-table fa-fw"></i> List</a>
                                 </li>
 
                             </ul>
@@ -295,7 +302,7 @@
 						<li><a href="getMyInformation.action"><i class="fa fa-plus fa-fw"></i> Create<span class="fa arrow"></span></a>
 							<ul class="nav nav-second-level">
                                 <li>
-                                    <a href="openCreationCourse.action"><i class="fa fa-university"></i> Cours</a>
+                                    <a href="document"><i class="fa fa-university"></i> Document</a>
                                 </li>
                                 <li>
                                     <a href="openCreationTeacher.action"><i class="fa fa-user"></i> Teacher</a>
@@ -326,20 +333,23 @@
         </nav>
         </div>
         
-    <!-- jQuery -->
-    <script src="scriptLibrary/jquery/dist/jquery.min.js"></script>
+	    <!-- jQuery -->
+   	<script src="/Workflow/scriptLibrary/jquery/jquery-1.11.1.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="scriptLibrary/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/Workflow/scriptLibrary/bootstrap/js/bootstrap.min.js"></script>    
     
-	
+ 
+	<!-- Metis Menu Plugin JavaScript -->
+	<script src="/Workflow/scriptLibrary/metisMenu/dist/metisMenu.min.js"></script>
 
 	<!-- DataTables JavaScript -->
-    <script src="scriptLibrary/datatables/media/js/jquery.dataTables.min.js"></script>
-    <script src="scriptLibrary/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+    <script src="/Workflow/scriptLibrary/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src="/Workflow/scriptLibrary/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="scriptLibrary/customScript/sb-admin-2.js"></script>
-        
+    <script src="/Workflow/scriptLibrary/customScript/sb-admin-2.js"></script>
+    
+       
         </body>
         </html>
