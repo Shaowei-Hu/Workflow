@@ -65,6 +65,8 @@
 											<th>Job</th>
 											<th>Manager ID -- Name</th>
 											<th>Partner ID -- Name</th>
+											<th>Update</th>
+											<th>Delete</th>
 											<th class="hideUrl"></th>
 										</tr>
 									</thead>
@@ -78,7 +80,10 @@
 												<td class="desc"><c:out value="${item.agency}" /></td>
 												<td class="desc"><c:out value="${item.job}" /></td>
 												<td class="desc"><c:out value="${item.manager.userId} -- ${item.manager.userName}" /></td>
-												<td class="desc"><c:out value="${item.partner.userId} -- ${item.partner.userName}" /></td><td class="hideUrl">show/${item.userId}</td>
+												<td class="desc"><c:out value="${item.partner.userId} -- ${item.partner.userName}" /></td>
+												<td class="desc"><a href="update/${item.userId}"><i class="fa fa-wrench fa-fw"></i></a></td>
+												<td class="desc"><a onclick="return confirm('Are you sure to delete this user?');" href="delete/${item.userId}"><i class="fa fa-trash fa-fw"></i></a></td>
+												<td class="hideUrl">show/${item.userId}</td>
 											</tr>
 										</c:forEach>
 									</tbody>
@@ -111,7 +116,6 @@
 
 	</div>
 	<!-- /#wrapper -->
-
 
 
 	<!-- Page-Level Demo Scripts - Tables - Use for reference -->

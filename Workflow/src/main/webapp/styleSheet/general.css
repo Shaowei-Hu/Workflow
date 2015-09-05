@@ -1,5 +1,5 @@
 body{
-	padding-top: 0px;
+	padding-top: 20px;
 }
 
 #tab1, #tab2, #tab3, #tab4, #tab5, #tab0{
@@ -44,4 +44,8 @@ form{
 }
 .rowClickable:hover{
 	cursor: pointer;
+}
+
+#commentHide{
+	display: none;
 }

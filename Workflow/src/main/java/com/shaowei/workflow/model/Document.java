@@ -1,49 +1,71 @@
 package com.shaowei.workflow.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Set;
 
-public class Document {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Transient;
+
+@Entity(name="wkf_document")
+public class Document implements Serializable{
 	
-	private int authorId;
-	private int responsibleId;
-	private Set<Integer> lectorIds;
-	private String currentStep;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7751937233717296438L;
 	
+
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="DOCUMENT_ID")
 	private int documentId;
+	@JoinColumn(name="CLIENT")
 	private String client;
+	@JoinColumn(name="AMOUNT")
 	private BigDecimal amount;
+	@JoinColumn(name="RESOURCE")
 	private BigDecimal resource;
 	
-	private List<Comment> comments;
+	@ManyToOne
+	@JoinColumn(name="AUTHOR_ID")
+	private User author;
 	
+	@ManyToOne
+	@JoinColumn(name="RESPONSIBLE_ID")
+	private User responsible;
+	
+	@ManyToMany
+	@JoinTable(name="wkf_lector_document", joinColumns={@JoinColumn(name="DOCUMENT_ID")}, inverseJoinColumns={@JoinColumn(name="LECTOR_ID")})
+	private Set<User> lectors;
+	
+	@ManyToMany
+	@JoinTable(name="wkf_intervenor_document", joinColumns={@JoinColumn(name="DOCUMENT_ID")}, inverseJoinColumns={@JoinColumn(name="INTERVENOR_ID")})
+	private Set<User> intervenors;
+	
+	@Column(name="CURRENTSTEP", length=64)
+	private String currentStep;
+	
+	@OneToMany(mappedBy="document")
+	private List<Comment> comments;
+	@OneToMany(mappedBy="document")
 	private List<History> history;
 
-	public int getAuthorId() {
-		return authorId;
-	}
-
-	public void setAuthorId(int authorId) {
-		this.authorId = authorId;
-	}
-
-	public int getResponsibleId() {
-		return responsibleId;
-	}
-
-	public void setResponsibleId(int responsibleId) {
-		this.responsibleId = responsibleId;
-	}
-
-	public Set<Integer> getLectorIds() {
-		return lectorIds;
-	}
-
-	public void setLectorIds(Set<Integer> lectorIds) {
-		this.lectorIds = lectorIds;
-	}
+	@Transient
+	private String amountSt;
+	@Transient
+	private String resourceSt;
 
 	public int getDocumentId() {
 		return documentId;
@@ -100,6 +122,64 @@ public class Document {
 	public void setStep(String step) {
 		this.currentStep = step;
 	}
+
+	public User getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(User author) {
+		this.author = author;
+	}
+
+	public User getResponsible() {
+		return responsible;
+	}
+
+	public void setResponsible(User responsible) {
+		this.responsible = responsible;
+	}
+
+	public Set<User> getLectors() {
+		return lectors;
+	}
+
+	public void setLectors(Set<User> lectors) {
+		this.lectors = lectors;
+	}
+
+	public String getCurrentStep() {
+		return currentStep;
+	}
+
+	public void setCurrentStep(String currentStep) {
+		this.currentStep = currentStep;
+	}
+
+	public Set<User> getIntervenors() {
+		return intervenors;
+	}
+
+	public void setIntervenors(Set<User> intervenors) {
+		this.intervenors = intervenors;
+	}
+
+	public String getAmountSt() {
+		return amountSt;
+	}
+
+	public void setAmountSt(String amountSt) {
+		this.amountSt = amountSt;
+	}
+
+	public String getResourceSt() {
+		return resourceSt;
+	}
+
+	public void setResourceSt(String resourceSt) {
+		this.resourceSt = resourceSt;
+	}
+
+
 	
 	
 	

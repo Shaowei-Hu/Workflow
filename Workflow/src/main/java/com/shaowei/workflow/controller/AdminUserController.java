@@ -40,7 +40,7 @@ public class AdminUserController {
 	}
 	
 	@RequestMapping(value="/list", method = RequestMethod.GET)
-	public String getAllUsers(Model model){
+	public String showAllUsers(Model model){
 		List<User> allUsers = userService.getAllUsers();
 		model.addAttribute("allUsers", allUsers);
 		return "adminViews/allWorkflowUsers";
@@ -51,6 +51,32 @@ public class AdminUserController {
 		User user = userService.getUserById(userId);
 		model.addAttribute("user", user);
 		return "adminViews/showWorkflowUser";
+	}
+	
+	@RequestMapping(value="/operate", method = RequestMethod.GET)
+	public String operateAllUsers(Model model){
+		List<User> allUsers = userService.getAllUsers();
+		model.addAttribute("allUsers", allUsers);
+		return "adminViews/allOperateWorkflowUsers";		
+	}
+	
+	@RequestMapping(value="/update/{userId}", method = RequestMethod.GET)
+	public String updateUser(@PathVariable int userId, Model model){
+		User user = userService.getUserById(userId);
+		model.addAttribute("user", user);
+		return "adminViews/updateWorkflowUser";
+	}
+	
+	@RequestMapping(value="/update/{userId}", method = RequestMethod.POST)
+	public String updateUser(User user){
+		userService.updateUser(user);
+		return "redirect:/admin/list";
+	}
+	
+	@RequestMapping(value="/delete/{userId}", method = RequestMethod.GET)
+	public String deleteUser(@PathVariable int userId, Model model){
+		userService.deleteUser(userId);
+		return "redirect:/admin/operate";
 	}
 
 }

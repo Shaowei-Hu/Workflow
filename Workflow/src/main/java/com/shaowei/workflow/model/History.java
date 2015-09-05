@@ -1,18 +1,44 @@
 package com.shaowei.workflow.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class History {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity(name="wkf_history")
+public class History implements Serializable{	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="HISTORY_ID")
 	private int historyId;
 	
+	@Column(name="DATE")
 	private Date date;
-	private String step;
-	private String phase;
-	private int responsibleId;
-	private String responsibleName;
-	private String decision;
-	private String nextStep;
+	@ManyToOne
+	@JoinColumn(name="STEP_ID")
+	private Step step;
+
+	@ManyToOne
+	@JoinColumn(name="RESPONSIBLE_ID")
+	private User responsible;
+
+	@ManyToOne
+	@JoinColumn(name="DOCUMENT_ID")
+	private Document document;
+	@Column(name="MESSAGE", length=128)
+	private String message;
 	
 	
 	public int getHistoryId() {
@@ -27,41 +53,29 @@ public class History {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public String getStep() {
+	public User getResponsible() {
+		return responsible;
+	}
+	public void setResponsible(User responsible) {
+		this.responsible = responsible;
+	}
+	public Document getDocument() {
+		return document;
+	}
+	public void setDocument(Document document) {
+		this.document = document;
+	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	public Step getStep() {
 		return step;
 	}
-	public void setStep(String step) {
+	public void setStep(Step step) {
 		this.step = step;
-	}
-	public String getPhase() {
-		return phase;
-	}
-	public void setPhase(String phase) {
-		this.phase = phase;
-	}
-	public int getResponsibleId() {
-		return responsibleId;
-	}
-	public void setResponsibleId(int responsibleId) {
-		this.responsibleId = responsibleId;
-	}
-	public String getResponsibleName() {
-		return responsibleName;
-	}
-	public void setResponsibleName(String responsibleName) {
-		this.responsibleName = responsibleName;
-	}
-	public String getDecision() {
-		return decision;
-	}
-	public void setDecision(String decision) {
-		this.decision = decision;
-	}
-	public String getNextStep() {
-		return nextStep;
-	}
-	public void setNextStep(String nextStep) {
-		this.nextStep = nextStep;
 	}
 	
 	

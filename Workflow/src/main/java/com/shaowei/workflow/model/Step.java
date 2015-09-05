@@ -1,13 +1,48 @@
 package com.shaowei.workflow.model;
 
-public class Step {
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
+@Entity(name="wkf_workflow")
+public class Step implements Serializable{
+		
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5004519918038632155L;
 	
+	@Id
+	@Column(name="ID")
+	private int id;
+	
+	@Column(name="STEP_ID", length=8)
 	private String stepId;
+	@Column(name="STEP_NAME", length=64)
 	private String stepName;
+	
+	@Column(name="PHASE", length=64)
 	private String phase;
+	@Column(name="DECISION", length=64)
 	private String decision;
+	@Column(name="CONDITIONN", length=64)
 	private String condition;
-	private String nextStepId;
+	
+	@Column(name="INTERVONERJOB", length=32)
+	private String intervonerJob;
+	@Column(name="AUTORITY", length=16)
+	private String autority;
+	
+	@OneToOne
+	@JoinColumn(name="NEXT_STEP_ID")
+	private Step nextStep;
+	
+	@OneToOne(mappedBy="nextStep")
+	private Step previousSteps;
 	
 	
 	public String getStepId() {
@@ -40,12 +75,27 @@ public class Step {
 	public void setCondition(String condition) {
 		this.condition = condition;
 	}
-	public String getNextStepId() {
-		return nextStepId;
+	public int getId() {
+		return id;
 	}
-	public void setNextStepId(String nextStepId) {
-		this.nextStepId = nextStepId;
+	public void setId(int id) {
+		this.id = id;
 	}
+	public Step getNextStep() {
+		return nextStep;
+	}
+	public void setNextStep(Step nextStep) {
+		this.nextStep = nextStep;
+	}
+	public Step getPreviousSteps() {
+		return previousSteps;
+	}
+	public void setPreviousSteps(Step previousSteps) {
+		this.previousSteps = previousSteps;
+	}
+
+
+	
 	
 	
 

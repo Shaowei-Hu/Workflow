@@ -12,7 +12,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Welcome Admin</title>
+<title>Welcome User</title>
 
 
    <!-- Bootstrap Core CSS -->
@@ -49,7 +49,7 @@
 
 	<div id="wrapper">
 
-		<jsp:include page="adminHeader.jsp"></jsp:include>
+		<jsp:include page="userHeader.jsp"></jsp:include>
 
 		<div id="page-wrapper">
 
@@ -67,8 +67,8 @@
             <div class="col-md-4">
                 <h1>Business Name or Tagline</h1>
                 <p id="url2forward">${request.url }</p>
-				<p>${admin.adminName} ${request.info } </p>
-				<p>Your email address: ${admin.email} </p>
+				<p>Hello ${user.userName}</p>
+				<p>Job: ${user.job} </p>
                 <p>This is a template that is great for small businesses. It doesn't have too much fancy flare to it, but it makes a great use of the standard Bootstrap core components. Feel free to use this template for any project you want!</p>
                 <a class="btn btn-primary btn-lg" href="#">Call to Action!</a>
             </div>

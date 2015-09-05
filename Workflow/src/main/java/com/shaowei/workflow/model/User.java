@@ -41,7 +41,7 @@ public class User implements Serializable{
 	@Column(name="AGENCE",length=16)
 	private String agency;
 	
-	@Column(name="JOB",length=16)
+	@Column(name="JOB",length=32)
 	private String job;
 	@ManyToOne
 	@JoinColumn(name="MANAGER_ID")

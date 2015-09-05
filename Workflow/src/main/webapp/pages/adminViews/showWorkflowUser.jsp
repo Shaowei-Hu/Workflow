@@ -197,18 +197,6 @@
 
 
 
-	<!-- jQuery -->
-	<script src="/Workflow/scriptLibrary/jquery/jquery-1.11.1.js"></script>
-
-	<!-- Bootstrap Core JavaScript -->
-	<!-- <script src="/Workflow/scriptLibrary/bootstrap/js/bootstrap.min.js"></script> -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="/Workflow/scriptLibrary/customScript/sb-admin-2.js"></script>
-
-
-
 
 
 </body>

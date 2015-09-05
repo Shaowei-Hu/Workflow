@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.shaowei.workflow.exception.CustomGenericException;
 import com.shaowei.workflow.model.Admin;
 import com.shaowei.workflow.service.AdminService;
 
@@ -25,7 +26,7 @@ public class AdminController {
 			request.getSession().setAttribute("admin", admin);
 			return "adminViews/adminHome";
 		} else
-			return "error";
+			throw new CustomGenericException("100", "Login error");
 	}
 
 }

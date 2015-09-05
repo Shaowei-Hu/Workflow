@@ -34,7 +34,7 @@
 <body>
 	<div id="wrapper">
 
-		<jsp:include page="adminHeader.jsp"></jsp:include>
+		<jsp:include page="userHeader.jsp"></jsp:include>
 
 		<div id="page-wrapper">
 			<div class="row">
@@ -58,28 +58,27 @@
 									<thead>
 										<tr>
 											<th>ID</th>
-											<th>User Name</th>
-											<th>Site</th>
-											<th>Region</th>
-											<th>Agency</th>
-											<th>Job</th>
+											<th>Client Name</th>
+											<th>Amount</th>
+											<th>Resource</th>
+											<th>Author</th>
+											<th>Responsible</th>
 											<th>Manager ID -- Name</th>
 											<th>Partner ID -- Name</th>
 											<th class="hideUrl"></th>
 										</tr>
 									</thead>
 									<tbody>
-										<c:forEach var="item" items="${allUsers}">
+										<c:forEach var="item" items="${allDocuments}">
 											<tr class="rowClickable">
-												<td class="idcell"><c:out value="${item.userId}" /></td>
-												<td class="username"><c:out value="${item.userName}" /></td>
-												<td class="desc"><c:out value="${item.site}" /></td>
-												<td class="desc"><c:out value="${item.region}" /></td>
-												<td class="desc"><c:out value="${item.agency}" /></td>
-												<td class="desc"><c:out value="${item.job}" /></td>
-												<td class="desc"><c:out value="${item.manager.userId} -- ${item.manager.userName}" /></td>
-												<td class="desc"><c:out value="${item.partner.userId} -- ${item.partner.userName}" /></td><td class="hideUrl">show/${item.userId}</td>
-											</tr>
+												<td class="idcell"><c:out value="${item.documentId}" /></td>
+												<td class="username"><c:out value="${item.client}" /></td>
+												<td class="desc"><c:out value="${item.amount}" /></td>
+												<td class="desc"><c:out value="${item.resource}" /></td>
+												<td class="desc"><c:out value="${item.author.userName}" /></td>
+												<td class="desc"><c:out value="${item.responsible.userName}" /></td>
+												<td class="desc"><a href="show/${item.documentId}">Entre</a></td>
+												<td class="desc"><c:out value="1" /></td><td class="hideUrl">show/${item.documentId}</td></tr>
 										</c:forEach>
 									</tbody>
 								</table>
@@ -112,41 +111,42 @@
 	</div>
 	<!-- /#wrapper -->
 
-
+	<!-- DataTables JavaScript -->
+	<script src="/Workflow/scriptLibrary/datatables/media/js/jquery.dataTables.min.js"></script>
+	<script src="/Workflow/scriptLibrary/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
 
 	<!-- Page-Level Demo Scripts - Tables - Use for reference -->
 	<script>
-    $(document).ready(function() {
-        $('#dataTables').DataTable({
-                responsive: true
-        });
-    });
-    
-		function init(){
-		initClickable();
-		
-	}
+		$(document).ready(function() {
+			$('#dataTables').DataTable({
+				responsive : true
+			});
+		});
 
-	function initClickable(){
-		var rows = document.getElementsByTagName("tr");
-		for(var i=0; i<rows.length; i++){
-			if(rows[i].className=="rowClickable"){
-				rows[i].onclick = clickRow;
-			}
+		function init() {
+			initClickable();
+
 		}
-		
-	}
 
-	function clickRow(){
-		var thisElement = window.event.srcElement;
-		window.location.href = thisElement.parentNode.lastChild.firstChild.nodeValue;
-	}
+		function initClickable() {
+			var rows = document.getElementsByTagName("tr");
+			for (var i = 0; i < rows.length; i++) {
+				if (rows[i].className == "rowClickable") {
+					rows[i].onclick = clickRow;
+				}
+			}
 
+		}
 
+		function clickRow() {
+			
+			var thisElement = window.event.srcElement;
+			alert(thisElement.parentNode.lastChild);
+			window.location.href = thisElement.parentNode.lastChild.firstChild.nodeValue;
+			
+		}
 
-
-
-	init();
-    </script>
+		init();
+	</script>
 </body>
 </html>
