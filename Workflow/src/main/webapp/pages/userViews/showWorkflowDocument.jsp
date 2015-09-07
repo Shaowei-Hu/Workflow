@@ -104,8 +104,6 @@
 				
 				
 				
-				
-				
 				<c:forEach var="item" items="${document.comments}">
 				<div class="row">
 					<div class="col-lg-12">
@@ -146,10 +144,7 @@
 				</div>
 				</c:forEach>
 				
-				
-				
-			
-				
+					
 				<div class="row" id="commentHide">
 					<div class="col-lg-12">
 					<st:form method="post" modelAttribute="comment" action="addComment">
@@ -234,14 +229,14 @@
 						<div class="col-lg-8">
 							<div class="form-group">
 								<label class="control-label text-warning" for="inputSuccess">Actual step</label>
-								<p class="form-control text-warning">1.Montage de dossiers</p>
+								<p class="form-control text-warning">${document.currentStep}</p>
 							</div>
 
 							<div class="form-group">
 								<label class="control-label text-danger" for="inputSuccess">Decision</label> <select id="disabledSelect" class="form-control text-danger">
-									<option>Disabled select1</option>
-									<option>Disabled select2</option>
-									<option>Disabled select3</option>
+									<c:forEach var="item" items="${steps}">
+										<option>${item.decision}</option>
+									</c:forEach>
 								</select>
 							</div>
 							

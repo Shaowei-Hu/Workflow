@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -37,12 +38,9 @@ public class Step implements Serializable{
 	@Column(name="AUTORITY", length=16)
 	private String autority;
 	
-	@OneToOne
+	@OneToOne(fetch=FetchType.LAZY, optional=false)
 	@JoinColumn(name="NEXT_STEP_ID")
 	private Step nextStep;
-	
-	@OneToOne(mappedBy="nextStep")
-	private Step previousSteps;
 	
 	
 	public String getStepId() {
@@ -87,15 +85,6 @@ public class Step implements Serializable{
 	public void setNextStep(Step nextStep) {
 		this.nextStep = nextStep;
 	}
-	public Step getPreviousSteps() {
-		return previousSteps;
-	}
-	public void setPreviousSteps(Step previousSteps) {
-		this.previousSteps = previousSteps;
-	}
-
-
-	
 	
 	
 

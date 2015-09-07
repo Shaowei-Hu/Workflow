@@ -55,4 +55,8 @@ public class DocumentDao extends BaseDao<Document>{
 
 	}
 	
+	public List<Document> getDocumentByIntervenor(int intervenorId){
+		return documentMapper.getAllDocumentByIntervenor(intervenorId);
+	}
+	
 }

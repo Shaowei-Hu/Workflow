@@ -80,5 +80,9 @@ public class UserService {
 		}
 		return true;
 	}
+	
+	public List<User> getUserByJob(String job){
+		return userDao.getUsersByJob(job);
+	}
 
 }

@@ -9,8 +9,10 @@ import org.springframework.stereotype.Service;
 
 import com.shaowei.workflow.dao.CommentDao;
 import com.shaowei.workflow.dao.DocumentDao;
+import com.shaowei.workflow.dao.StepDao;
 import com.shaowei.workflow.model.Comment;
 import com.shaowei.workflow.model.Document;
+import com.shaowei.workflow.model.Step;
 import com.shaowei.workflow.model.User;
 
 @Service
@@ -20,6 +22,8 @@ public class DocumentService {
 	private DocumentDao documentDao;
 	@Resource
 	private CommentDao commentDao;
+	@Resource
+	private StepDao stepDao;
 
 	public boolean addDocument(Document document, User author) {
 		try {
@@ -31,6 +35,8 @@ public class DocumentService {
 			document.setResource(new BigDecimal(resource));
 			document.setAuthor(author);
 			document.setResponsible(author);
+			String currentStep = getStepNameByStepId("01");
+			document.setCurrentStep(currentStep);
 
 			documentDao.add(document);
 		} catch (Exception e) {
@@ -67,5 +73,23 @@ public class DocumentService {
 	
 	public List<Document> getAllDocumentByResponsible(int responsibleId){
 		return documentDao.getDocumentByResiponble(responsibleId);
+	}
+	
+	public List<Document> getAllDocumentByIntervenor(int intervenorId){
+		return documentDao.getDocumentByIntervenor(intervenorId);
+	}
+	
+	public String getStepNameByStepId(String stepId){
+		List<Step> steps = stepDao.getStepByStepId(stepId);
+		return stepId + "-" + steps.get(0).getStepName();
+	}
+	
+	public List<Step> getStepsByStepId(String stepId){
+		return stepDao.getStepByStepId(stepId);
+	}
+	
+	public List<Step> getStepsByDocument(Document document){
+		String stepId = document.getCurrentStep().split("-")[0];		
+		return getStepsByStepId(stepId);
 	}
 }

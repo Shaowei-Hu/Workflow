@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.shaowei.workflow.exception.CustomGenericException;
 import com.shaowei.workflow.model.Comment;
 import com.shaowei.workflow.model.Document;
+import com.shaowei.workflow.model.Step;
 import com.shaowei.workflow.model.User;
 import com.shaowei.workflow.service.DocumentService;
 import com.shaowei.workflow.service.UserService;
@@ -60,8 +61,10 @@ public class UserController {
 	@RequestMapping(value="/show/{documentId}", method=RequestMethod.GET)
 	public String showDocument(@PathVariable int documentId, Model model){
 		Document document = documentService.getDocument(documentId);
+		List<Step> steps = documentService.getStepsByDocument(document);
 		model.addAttribute("document", document);
 		model.addAttribute("comment", new Comment());
+		model.addAttribute("steps", steps);
 		return "userViews/showWorkflowDocument";
 	}
 	
@@ -77,6 +80,16 @@ public class UserController {
 		User user = (User) request.getSession().getAttribute("user");	
 		List<Document> allDocuments = documentService.getAllDocumentByResponsible(user.getUserId());
 		model.addAttribute("allDocuments", allDocuments);
+		model.addAttribute("tab", 0);
+		return "userViews/allWorkflowDocuments";
+	}
+	
+	@RequestMapping(value="/myintervenedList", method=RequestMethod.GET)
+	public String listMyIntervenedDocuments(Model model, HttpServletRequest request){
+		User user = (User) request.getSession().getAttribute("user");	
+		List<Document> allDocuments = documentService.getAllDocumentByIntervenor(user.getUserId());
+		model.addAttribute("allDocuments", allDocuments);
+		model.addAttribute("tab", 1);
 		return "userViews/allWorkflowDocuments";
 	}
 	
@@ -86,8 +99,10 @@ public class UserController {
 		boolean sucess = documentService.addComment(comment, responsible);
 		if(sucess){
 			Document newDocument = documentService.getDocumentByComment(comment);
+			List<Step> steps = documentService.getStepsByDocument(newDocument);
 			model.addAttribute("document", newDocument);
 			model.addAttribute("comment", new Comment());
+			model.addAttribute("steps", steps);
 			return "userViews/showWorkflowDocument";
 		} else
 			throw new CustomGenericException("202", "Comment has not been created, some exceptions have been found");

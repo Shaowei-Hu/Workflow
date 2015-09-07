@@ -30,5 +30,16 @@ public class UserDao extends BaseDao<User>{
 		else
 			return users.get(0);
 	}
+	
+	public List<User> getUsersByJob(String job){
+		Session session = super.getHibernateTemplate().getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		Criteria criteria = session.createCriteria(User.class);
+		criteria.add(Restrictions.eqProperty("job", job));
+		@SuppressWarnings("unchecked")
+		List<User> users = criteria.list();
+		session.getTransaction().commit();
+		return users;
+	}
 
 }

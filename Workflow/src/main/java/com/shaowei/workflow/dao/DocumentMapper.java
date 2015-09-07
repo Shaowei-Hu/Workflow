@@ -24,7 +24,26 @@ public interface DocumentMapper {
 	 })
 	 public List<Document> getAllDocumentByResponsible(int responsibleId);
 	 
+	 
+	 @Select("SELECT DOCUMENT_ID FROM wkf_intervenor_document WHERE INTERVENOR_ID=#{intervenorId}")
+	 @Results(value={
+			 @Result(javaType=com.shaowei.workflow.model.Document.class, column="DOCUMENT_ID", one=@One(select = "getDocumentById"))	 
+	 }) 
+	 public List<Document> getAllDocumentByIntervenor(int intervenorId);
+	 
 	 @Select("SELECT USER_ID as userId, NAME as userName FROM wkf_user WHERE USER_ID=#{userId}")
 	 public User getUser(int userId);
+	 
+	 @Select("SELECT * FROM wkf_document WHERE DOCUMENT_ID=#{documentId}" )
+	 @Results({
+		  @Result(id=true, property="documentId", column="DOCUMENT_ID"),
+		  @Result(property="amount", column="amount"),
+		  @Result(property="client", column="client"),
+		  @Result(property="resource", column="resource"),
+		  @Result(property="currentStep", column="CURRENTSTEP"),
+		  @Result(property="author", javaType=com.shaowei.workflow.model.User.class, column="AUTHOR_ID", one=@One(select = "getUser")),
+		  @Result(property="responsible", javaType=com.shaowei.workflow.model.User.class, column="RESPONSIBLE_ID", one=@One(select = "getUser"))
+		 })
+	 public Document getDocumentById(int documentId);
 
 }

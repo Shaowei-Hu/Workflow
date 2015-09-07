@@ -32,6 +32,7 @@
 
 </head>
 <body>
+	<p id="tabIndex" class="hideUrl">${tab}</p>
 	<div id="wrapper">
 
 		<jsp:include page="userHeader.jsp"></jsp:include>
@@ -45,8 +46,15 @@
 				<!-- /.col-lg-12 -->
 			</div>
 			<!-- /.row -->
+			
 			<div class="row">
 				<div class="col-lg-12">
+					<ul class="nav nav-tabs nav-justified">
+						<li><a href="myList"><h5><strong>My Document To Treat</strong></h3></a></li>
+						<li><a href="myintervenedList"><h5><strong>My Document intervened</strong></h3></a></li>
+						<li><a href="#"><h5><strong>Menu 2</strong></h5></a></li>
+						<li><a href="#"><h5><strong>Menu 3</strong></h5></a></li>
+					</ul>
 					<div class="panel panel-default">
 						<div class="panel-heading">DataTables Advanced Tables</div>
 						<!-- /.panel-heading -->
@@ -63,7 +71,7 @@
 											<th>Resource</th>
 											<th>Author</th>
 											<th>Responsible</th>
-											<th>Manager ID -- Name</th>
+											<th>Current Step</th>
 											<th>Partner ID -- Name</th>
 											<th class="hideUrl"></th>
 										</tr>
@@ -77,7 +85,7 @@
 												<td class="desc"><c:out value="${item.resource}" /></td>
 												<td class="desc"><c:out value="${item.author.userName}" /></td>
 												<td class="desc"><c:out value="${item.responsible.userName}" /></td>
-												<td class="desc"><a href="show/${item.documentId}">Entre</a></td>
+												<td class="desc">${item.currentStep}</td>
 												<td class="desc"><c:out value="1" /></td><td class="hideUrl">show/${item.documentId}</td></tr>
 										</c:forEach>
 									</tbody>
@@ -121,6 +129,8 @@
 			$('#dataTables').DataTable({
 				responsive : true
 			});
+			
+			$(".nav-tabs").children().eq($("#tabIndex").text()).addClass("active");
 		});
 
 		function init() {
@@ -141,12 +151,13 @@
 		function clickRow() {
 			
 			var thisElement = window.event.srcElement;
-			alert(thisElement.parentNode.lastChild);
 			window.location.href = thisElement.parentNode.lastChild.firstChild.nodeValue;
 			
 		}
 
 		init();
+
+		
 	</script>
 </body>
 </html>
