@@ -2,6 +2,7 @@ package com.shaowei.workflow.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -57,10 +58,15 @@ public class Document implements Serializable{
 	@Column(name="CURRENTSTEP", length=64)
 	private String currentStep;
 	
+	@Column(name="STEPDATE")
+	private Date stepDate;
+	
 	@OneToMany(mappedBy="document")
 	private List<Comment> comments;
 	@OneToMany(mappedBy="document")
 	private List<History> history;
+	
+	
 
 	@Transient
 	private String amountSt;
@@ -177,6 +183,14 @@ public class Document implements Serializable{
 
 	public void setResourceSt(String resourceSt) {
 		this.resourceSt = resourceSt;
+	}
+
+	public Date getStepDate() {
+		return stepDate;
+	}
+
+	public void setStepDate(Date stepDate) {
+		this.stepDate = stepDate;
 	}
 
 

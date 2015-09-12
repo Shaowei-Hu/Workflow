@@ -33,7 +33,7 @@ public class Step implements Serializable{
 	@Column(name="CONDITIONN", length=64)
 	private String condition;
 	
-	@Column(name="INTERVONERJOB", length=32)
+	@Column(name="INTERVENORJOB", length=32)
 	private String intervonerJob;
 	@Column(name="AUTORITY", length=16)
 	private String autority;

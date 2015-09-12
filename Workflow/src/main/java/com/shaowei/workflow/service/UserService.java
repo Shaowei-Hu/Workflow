@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.shaowei.workflow.dao.UserDao;
+import com.shaowei.workflow.model.KeyValue;
 import com.shaowei.workflow.model.User;
 
 @Service
@@ -14,11 +15,15 @@ public class UserService {
 
 	@Resource
 	private UserDao userDao;
+	@Resource
+	private WorkflowService workflowService;
 	
 	public User verifyExistence(String name, String password) {
 		User user = userDao.getUserByName(name);
-		if (user!=null && user.getUserPassword().equals(password))
+		if (user!=null && user.getUserPassword().equals(password)){
+			user = setCapacity(user);
 			return user;
+		}
 		else
 			return null;
 	}
@@ -83,6 +88,24 @@ public class UserService {
 	
 	public List<User> getUserByJob(String job){
 		return userDao.getUsersByJob(job);
+	}
+	
+	public List<KeyValue> getUserJobByJob(String job){
+		return userDao.getUserJobByJob(job);
+	}
+	
+	public List<KeyValue> getIntervenorForId(int id){
+		String job = workflowService.getIntervenorJobById(id);
+		return getUserJobByJob(job);
+	}
+	
+	private User setCapacity(User user){
+		if(user.getJob().equalsIgnoreCase("Trader")){
+			user.setCapacity("Create");
+		}
+		else
+			user.setCapacity("null");
+		return user;
 	}
 
 }

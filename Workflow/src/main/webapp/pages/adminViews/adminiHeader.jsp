@@ -9,7 +9,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Admin - Bootstrap Admin Theme</title>
+<title>SB Admin 2 - Bootstrap Admin Theme</title>
 
 <!-- Bootstrap Core CSS -->
 <link href="/Workflow/scriptLibrary/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -191,7 +191,7 @@
 					<li><a href="getMyInformation.action"><i class="fa fa-user fa-fw"></i> User Profile</a></li>
 					<li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a></li>
 					<li class="divider"></li>
-					<li><a href="/Workflow/user/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+					<li><a href="adminlogin.jsp"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
 				</ul> <!-- /.dropdown-user --></li>
 			<!-- /.dropdown -->
 		</ul>
@@ -201,14 +201,11 @@
 			<div class="sidebar-nav navbar-collapse">
 				<ul class="nav" id="side-menu">
 
-					<li><a href="/Workflow/user/welcome"><i class="fa fa-home fa-fw"></i> Welcome</a></li>
-					<li><a href="#"><i class="fa fa-archive fa-fw"></i> Documents<span class="fa arrow"></span></a>
+					<li><a href="welcome"><i class="fa fa-home fa-fw"></i> Welcome</a></li>
+					<li><a href="#"><i class="fa fa-group fa-fw"></i> Users<span class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
-
-							<li><a href="/Workflow/document/myList"><i class="fa fa-bars fa-fw"></i> List</a></li>
-
-							<li><a href="/Workflow/document/create"><i class="fa fa-plus fa-fw"></i> Create</a></li>
-
+							<li><a href="create"><i class="fa fa-plus fa-fw"></i> Create</a></li>
+							<li><a href="list"><i class="fa fa-bars fa-fw"></i> List</a></li>
 							<li><a href="operate"><i class="fa fa-cog fa-fw"></i> Operate</a></li>
 
 						</ul></li>

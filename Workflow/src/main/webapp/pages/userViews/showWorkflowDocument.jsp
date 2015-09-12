@@ -13,7 +13,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>SB Admin 2 - Bootstrap Admin Theme</title>
+<title>Admin 2 - Bootstrap Admin Theme</title>
 
 <link href="/Workflow/styleSheet/general.css" rel="stylesheet" type="text/css">
 
@@ -187,17 +187,20 @@
 					</div>
 				</div>
 
+
+			<c:if test="${user.userId == document.responsible.userId}">
 				<div class="row">
 					<div class="col-lg-12 text-center">
 
 						<button id="addComment" type="button" class="btn btn-primary btn-lg">Add Comment</button>
-						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Transfer Button</button>
+						<button id="transfer" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Transfer Button</button>
 
 
 
 					</div>
 				</div>
-				<br>
+			</c:if>
+			<br>
 			
 		</div>
 		<!-- /#page-wrapper -->
@@ -210,6 +213,7 @@
 	<!-- Modal -->
 	<div class="modal fade in" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
+		<st:form method="post" modelAttribute="decision" action="/Workflow/document/transfer">
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -224,33 +228,35 @@
 						<div class="col-lg-2"></div>
 						<!-- /.col-lg-6 (nested) -->
 
-
-
+												
 						<div class="col-lg-8">
+<%-- 							<div class="form-group">
+								<label class="control-label text-warning" for="inputSuccess">Document Id</label>
+								<st:input id="" class="form-control text-warning" path="documentId" value="${document.documentId }" disabled></st:input>
+							</div> --%>
+							<st:hidden path="documentId" value="${document.documentId }"></st:hidden>
 							<div class="form-group">
 								<label class="control-label text-warning" for="inputSuccess">Actual step</label>
-								<p class="form-control text-warning">${document.currentStep}</p>
+								<p id="currentStep" class="form-control text-warning">${document.currentStep}</p>
 							</div>
 
 							<div class="form-group">
-								<label class="control-label text-danger" for="inputSuccess">Decision</label> <select id="disabledSelect" class="form-control text-danger">
-									<c:forEach var="item" items="${steps}">
-										<option>${item.decision}</option>
-									</c:forEach>
-								</select>
+								<label class="control-label text-danger" for="inputSuccess">Decision</label>
+								<st:select id="decisionSelect" class="form-control text-danger" path="decisionId">
+								<option>--Choose decision--</option>
+								</st:select>
 							</div>
 							
 							<div class="form-group">
-								<label class="control-label text-danger" for="inputSuccess">Destination</label> <select id="disabledSelect" class="form-control text-danger">
-									<option>Disabled select1</option>
-									<option>Disabled select2</option>
-									<option>Disabled select3</option>
-								</select>
+								<label class="control-label text-danger" for="inputSuccess">Destination</label>
+								<st:select id="destinationSelect" class="form-control text-danger" path="destinationId">
+									<option>--Choose destination--</option>
+								</st:select>
 							</div>
 
 							<div class="form-group">
 								<label>Comments</label>
-								<textarea class="form-control" rows="3"></textarea>
+								<st:textarea class="form-control" rows="3" path="comment"></st:textarea>
 							</div>
 						</div>
 						<!-- /.col-lg-6 (nested) -->
@@ -263,9 +269,10 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Valide</button>
+					<button type="submit" class="btn btn-primary">Valide</button>
 				</div>
 			</div>
+			</st:form>
 		</div>
 	</div>
 
@@ -278,6 +285,36 @@
 	    	alert();
 	        $("#commentHide").show();
 	    });
+	    
+	    $("#transfer").click(function(){
+	    	
+	    	var step = $("#currentStep").text();
+	    	var id = step.split("-")[0];
+	        $.ajax({url: "/Workflow/workflow/getDecisionByStepId/"+id, success: function(result){
+	        	$.each( result, function( index, value ){
+		        	$("#decisionSelect").append($('<option>', {
+		        	    value: value.keyy,
+		        	    text: value.value
+		        	}));
+	        	});
+
+	        }});
+	    });
+	    
+	    $("#decisionSelect").on("change", function() {
+	    	  $("#destinationSelect").empty().append('<option selected="selected" value="0">--Choose destination--</option>');
+		        $.ajax({url: "/Workflow/user/getUserJobByStepID/"+this.value, success: function(result){
+		        	$.each( result, function( index, value ){
+			        	$("#destinationSelect").append($('<option>', {
+			        	    value: value.keyy,
+			        	    text: value.value
+			        	}));
+		        	});
+
+		        }});
+	    	  
+	    	});
+	    
 	});
 	
 	</script>

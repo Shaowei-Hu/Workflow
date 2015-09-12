@@ -24,7 +24,7 @@ public class AdminController {
 		Admin admin = adminService.verifyExistence(username, password);
 		if (admin != null){
 			request.getSession().setAttribute("admin", admin);
-			return "adminViews/adminHome";
+			return "adminViews/adminiHome";
 		} else
 			throw new CustomGenericException("100", "Login error");
 	}

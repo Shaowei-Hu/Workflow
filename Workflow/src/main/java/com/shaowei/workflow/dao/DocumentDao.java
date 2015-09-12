@@ -37,6 +37,7 @@ public class DocumentDao extends BaseDao<Document>{
 			document = documents.get(0);
 			document.getComments().size();
 			document.getHistory().size();
+			document.getIntervenors().size();
 		}
 		session.getTransaction().commit();
 		return document;

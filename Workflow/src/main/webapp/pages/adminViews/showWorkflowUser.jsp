@@ -50,7 +50,7 @@
 
 <body>
 
-	<jsp:include page="adminHeader.jsp"></jsp:include>
+	<jsp:include page="adminiHeader.jsp"></jsp:include>
 	<div id="wrapper">
 
 		<!-- Navigation -->

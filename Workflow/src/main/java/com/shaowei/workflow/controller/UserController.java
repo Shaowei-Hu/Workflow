@@ -6,16 +6,14 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.shaowei.workflow.exception.CustomGenericException;
-import com.shaowei.workflow.model.Comment;
-import com.shaowei.workflow.model.Document;
-import com.shaowei.workflow.model.Step;
+import com.shaowei.workflow.model.KeyValue;
 import com.shaowei.workflow.model.User;
 import com.shaowei.workflow.service.DocumentService;
 import com.shaowei.workflow.service.UserService;
@@ -39,74 +37,23 @@ public class UserController {
 			throw new CustomGenericException("100", "Login error");
 	}
 	
-	@RequestMapping(value="/create", method=RequestMethod.GET)
-	public String createDocument(Model model){
-		model.addAttribute("document", new Document());
-		return "userViews/createWorkflowDocument";
+	@RequestMapping(value="/getUserJobByStepID/{id}", method = RequestMethod.GET)
+	public @ResponseBody List<KeyValue> getUserJobByStepID(@PathVariable int id){		
+		return userService.getIntervenorForId(id);
 	}
 	
-	@RequestMapping(value="/create", method=RequestMethod.POST)
-	public String createDocument(Document document, HttpServletRequest request, Model model){
-		User author = (User) request.getSession().getAttribute("user");
-		if(documentService.addDocument(document, author)){
-			model.addAttribute("document", document);
-			model.addAttribute("comment", new Comment());
-			return "userViews/showWorkflowDocument";
-		}
-			
-		else
-			throw new CustomGenericException("200", "Document has not been created, some exceptions have been found");
+	@RequestMapping(value = "/welcome", method = RequestMethod.GET)
+	public String welcome(){
+		return "userViews/userHome";
 	}
 	
-	@RequestMapping(value="/show/{documentId}", method=RequestMethod.GET)
-	public String showDocument(@PathVariable int documentId, Model model){
-		Document document = documentService.getDocument(documentId);
-		List<Step> steps = documentService.getStepsByDocument(document);
-		model.addAttribute("document", document);
-		model.addAttribute("comment", new Comment());
-		model.addAttribute("steps", steps);
-		return "userViews/showWorkflowDocument";
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(HttpServletRequest request) {
+			request.getSession().removeAttribute("user");
+			return "../index";
 	}
 	
-	@RequestMapping(value="/list", method=RequestMethod.GET)
-	public String listDocuments(Model model){
-		List<Document> allDocuments = documentService.getAllDocuments();
-		model.addAttribute("allDocuments", allDocuments);
-		return "userViews/allWorkflowDocuments";
-	}
 	
-	@RequestMapping(value="/myList", method=RequestMethod.GET)
-	public String listMyDocuments(Model model, HttpServletRequest request){
-		User user = (User) request.getSession().getAttribute("user");	
-		List<Document> allDocuments = documentService.getAllDocumentByResponsible(user.getUserId());
-		model.addAttribute("allDocuments", allDocuments);
-		model.addAttribute("tab", 0);
-		return "userViews/allWorkflowDocuments";
-	}
 	
-	@RequestMapping(value="/myintervenedList", method=RequestMethod.GET)
-	public String listMyIntervenedDocuments(Model model, HttpServletRequest request){
-		User user = (User) request.getSession().getAttribute("user");	
-		List<Document> allDocuments = documentService.getAllDocumentByIntervenor(user.getUserId());
-		model.addAttribute("allDocuments", allDocuments);
-		model.addAttribute("tab", 1);
-		return "userViews/allWorkflowDocuments";
-	}
 	
-	@RequestMapping(value="/show/addComment", method=RequestMethod.POST)
-	public String addComment(Comment comment, HttpServletRequest request, Model model){
-		User responsible = (User) request.getSession().getAttribute("user");
-		boolean sucess = documentService.addComment(comment, responsible);
-		if(sucess){
-			Document newDocument = documentService.getDocumentByComment(comment);
-			List<Step> steps = documentService.getStepsByDocument(newDocument);
-			model.addAttribute("document", newDocument);
-			model.addAttribute("comment", new Comment());
-			model.addAttribute("steps", steps);
-			return "userViews/showWorkflowDocument";
-		} else
-			throw new CustomGenericException("202", "Comment has not been created, some exceptions have been found");
-		
-	}
-
 }

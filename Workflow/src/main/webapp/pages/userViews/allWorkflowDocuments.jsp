@@ -86,7 +86,7 @@
 												<td class="desc"><c:out value="${item.author.userName}" /></td>
 												<td class="desc"><c:out value="${item.responsible.userName}" /></td>
 												<td class="desc">${item.currentStep}</td>
-												<td class="desc"><c:out value="1" /></td><td class="hideUrl">show/${item.documentId}</td></tr>
+												<td class="desc"><c:out value="${item.stepDate}" /></td><td class="hideUrl">show/${item.documentId}</td></tr>
 										</c:forEach>
 									</tbody>
 								</table>

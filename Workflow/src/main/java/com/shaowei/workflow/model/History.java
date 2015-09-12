@@ -33,6 +33,10 @@ public class History implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="RESPONSIBLE_ID")
 	private User responsible;
+	
+	@ManyToOne
+	@JoinColumn(name="NEXT_RESPONSIBLE_ID")
+	private User nextResponsible;
 
 	@ManyToOne
 	@JoinColumn(name="DOCUMENT_ID")
@@ -76,6 +80,12 @@ public class History implements Serializable{
 	}
 	public void setStep(Step step) {
 		this.step = step;
+	}
+	public User getNextResponsible() {
+		return nextResponsible;
+	}
+	public void setNextResponsible(User nextResponsible) {
+		this.nextResponsible = nextResponsible;
 	}
 	
 	
