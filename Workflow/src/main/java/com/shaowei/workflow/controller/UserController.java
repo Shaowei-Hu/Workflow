@@ -53,6 +53,11 @@ public class UserController {
 			return "../index";
 	}
 	
+	@RequestMapping(value="/getUsersKeyValue", method = RequestMethod.GET)
+	public @ResponseBody List<KeyValue> getUsersKeyValue(){		
+		return userService.getAllUsersKeyValue();
+	}
+	
 	
 	
 	

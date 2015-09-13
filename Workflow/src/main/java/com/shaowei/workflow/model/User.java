@@ -55,9 +55,9 @@ public class User implements Serializable{
 	private Set<User> myPartners;
 	
 	@Transient
-	private int managerId;
+	private String managerId;
 	@Transient
-	private int partnerId;
+	private String partnerId;
 	@Transient
 	private String capacity;
 	
@@ -128,23 +128,23 @@ public class User implements Serializable{
 	public void setMyPartners(Set<User> myPartners) {
 		this.myPartners = myPartners;
 	}
-	public int getManagerId() {
-		return managerId;
-	}
-	public void setManagerId(int managerId) {
-		this.managerId = managerId;
-	}
-	public int getPartnerId() {
-		return partnerId;
-	}
-	public void setPartnerId(int partnerId) {
-		this.partnerId = partnerId;
-	}
 	public String getCapacity() {
 		return capacity;
 	}
 	public void setCapacity(String capacity) {
 		this.capacity = capacity;
+	}
+	public String getManagerId() {
+		return managerId;
+	}
+	public void setManagerId(String managerId) {
+		this.managerId = managerId;
+	}
+	public String getPartnerId() {
+		return partnerId;
+	}
+	public void setPartnerId(String partnerId) {
+		this.partnerId = partnerId;
 	}
 	
 

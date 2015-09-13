@@ -31,15 +31,23 @@ public class UserService {
 	public boolean addUser(User user) {
 		try {
 			user.setUserPassword("initial");
-			int managerId = user.getManagerId();
-			int partnerId = user.getPartnerId();
-			User manager = userDao.get(managerId);
-			User partner = userDao.get(partnerId);
-			if(manager != null){
-				user.setManager(manager);		
+			String managerIdName = user.getManagerId();
+			String partnerIdName = user.getPartnerId();
+			if(managerIdName!=null && managerIdName!=""){
+				int managerId = Integer.parseInt(managerIdName.split("--")[0].trim());
+				User manager = userDao.get(managerId);
+				if(manager != null){
+					user.setManager(manager);		
+				}
+			}			
+			if(partnerIdName != null && partnerIdName != ""){
+				int partnerId = Integer.parseInt(partnerIdName.split("--")[0].trim());
+				User partner = userDao.get(partnerId);
+				if(partner != null)
+					user.setPartner(partner);
 			}
-			if(partner != null)
-				user.setPartner(partner);
+			
+
 			userDao.add(user);
 		} catch (Exception e) {
 			return false;
@@ -59,15 +67,21 @@ public class UserService {
 	public boolean updateUser(User user){
 		
 		try {
-			int managerId = user.getManagerId();
-			int partnerId = user.getPartnerId();
-			User manager = userDao.get(managerId);
-			User partner = userDao.get(partnerId);
-			if(manager != null){
-				user.setManager(manager);		
+			String managerIdName = user.getManagerId();
+			String partnerIdName = user.getPartnerId();
+			if(managerIdName!=null && managerIdName!=""){
+				int managerId = Integer.parseInt(managerIdName.split("--")[0].trim());
+				User manager = userDao.get(managerId);
+				if(manager != null){
+					user.setManager(manager);		
+				}
+			}			
+			if(partnerIdName != null && partnerIdName != ""){
+				int partnerId = Integer.parseInt(partnerIdName.split("--")[0].trim());
+				User partner = userDao.get(partnerId);
+				if(partner != null)
+					user.setPartner(partner);
 			}
-			if(partner != null)
-				user.setPartner(partner);
 			userDao.update(user);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -106,6 +120,10 @@ public class UserService {
 		else
 			user.setCapacity("null");
 		return user;
+	}
+	
+	public List<KeyValue> getAllUsersKeyValue(){
+		return userDao.getAllUserKeyValue();
 	}
 
 }

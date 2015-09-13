@@ -51,7 +51,7 @@
 
 <body>
 
-	<jsp:include page="adminiHeader.jsp"></jsp:include>
+	<jsp:include page="adminHeader.jsp"></jsp:include>
 	<div id="wrapper">
 
 		<!-- Navigation -->
@@ -225,34 +225,39 @@
 	<script>
 		$(document).ready(function() {
 
-			var countriesArray = $.map(countries, function(value, key) {
-				return {
-					value : key + " -- " + value,
-					data : key
-				};
-			});
+			var users = null;
+	        $.ajax({url: "/Workflow/user/getUsersKeyValue", async: false, success: function(result){
+				users = result;
+				
+	        }});
+	        
+			var usersArray = new Array();
+        	$.each(users, function( index, value ){
+        		usersArray.push({data: index, value: value.keyy+" -- "+value.value});
+        	});
+
 			// Initialize autocomplete with custom appendTo:
 			$('#managerInput').autocomplete({
-				lookup : countriesArray,
+				lookup : usersArray,
 				appendTo : '#suggestions-container-manager',
 				showNoSuggestionNotice : true,
 				onSelect : function(suggestion) {
 					$('#managerDiv').removeClass();
 					$('#managerDiv').addClass('form-group has-success has-feedback');
 					$('<span id="manager-glyphicon-ok" class="glyphicon glyphicon-ok form-control-feedback"></span>').insertAfter('#managerInput');
-					$('#managerInput').prop("disabled", true);
+//					$('#managerInput').prop("disabled", true);
 				}
 			});
 
 			$('#partnerInput').autocomplete({
-				lookup : countriesArray,
+				lookup : usersArray,
 				appendTo : '#suggestions-container-partner',
 				showNoSuggestionNotice : true,
 				onSelect : function(suggestion) {
 					$('#partnerDiv').removeClass();
 					$('#partnerDiv').addClass('form-group has-success has-feedback');
 					$('<span id="partner-glyphicon-ok" class="glyphicon glyphicon-ok form-control-feedback"></span>').insertAfter('#partnerInput');
-					$('#partnerInput').prop("disabled", true);
+//					$('#partnerInput').prop("disabled", true);
 				}
 			});
 

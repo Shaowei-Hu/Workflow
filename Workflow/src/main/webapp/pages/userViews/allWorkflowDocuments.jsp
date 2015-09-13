@@ -72,7 +72,7 @@
 											<th>Author</th>
 											<th>Responsible</th>
 											<th>Current Step</th>
-											<th>Partner ID -- Name</th>
+											<th>Step time</th>
 											<th class="hideUrl"></th>
 										</tr>
 									</thead>

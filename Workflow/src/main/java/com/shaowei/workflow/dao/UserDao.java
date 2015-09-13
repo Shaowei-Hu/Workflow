@@ -51,5 +51,9 @@ public class UserDao extends BaseDao<User>{
 	public List<KeyValue> getUserJobByJob(String job){
 		return userMapper.getUserKVByJob(job);
 	}
+	
+	public List<KeyValue> getAllUserKeyValue(){
+		return userMapper.getAllUsers();
+	}
 
 }
