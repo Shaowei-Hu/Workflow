@@ -139,4 +139,9 @@ public class DocumentService {
 		
 		return true;
 	}
+	
+	public List<History> getHistoriesByDocumentId(int documentId){
+		Document document = documentDao.get(documentId);
+		return historyService.getHistoriesByDocument(document);
+	}
 }

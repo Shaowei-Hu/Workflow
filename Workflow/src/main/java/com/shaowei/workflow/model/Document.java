@@ -18,6 +18,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 @Entity(name="wkf_document")
 public class Document implements Serializable{
 	
@@ -104,7 +106,7 @@ public class Document implements Serializable{
 	public void setResource(BigDecimal resource) {
 		this.resource = resource;
 	}
-
+	@JsonIgnore
 	public List<Comment> getComments() {
 		return comments;
 	}
@@ -112,7 +114,7 @@ public class Document implements Serializable{
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
 	}
-
+	@JsonIgnore
 	public List<History> getHistory() {
 		return history;
 	}
@@ -148,7 +150,7 @@ public class Document implements Serializable{
 	public Set<User> getLectors() {
 		return lectors;
 	}
-
+	@JsonIgnore
 	public void setLectors(Set<User> lectors) {
 		this.lectors = lectors;
 	}
@@ -160,7 +162,7 @@ public class Document implements Serializable{
 	public void setCurrentStep(String currentStep) {
 		this.currentStep = currentStep;
 	}
-
+	@JsonIgnore
 	public Set<User> getIntervenors() {
 		return intervenors;
 	}

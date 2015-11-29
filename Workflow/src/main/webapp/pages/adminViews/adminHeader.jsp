@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -201,12 +203,12 @@
 			<div class="sidebar-nav navbar-collapse">
 				<ul class="nav" id="side-menu">
 
-					<li><a href="welcome"><i class="fa fa-home fa-fw"></i> Welcome</a></li>
+					<li><a href="${pageContext.request.contextPath }/admin/welcome"><i class="fa fa-home fa-fw"></i> Welcome</a></li>
 					<li><a href="#"><i class="fa fa-group fa-fw"></i> Users<span class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
-							<li><a href="create"><i class="fa fa-plus fa-fw"></i> Create</a></li>
-							<li><a href="list"><i class="fa fa-bars fa-fw"></i> List</a></li>
-							<li><a href="operate"><i class="fa fa-cog fa-fw"></i> Operate</a></li>
+							<li><a href="${pageContext.request.contextPath }/admin/create"><i class="fa fa-plus fa-fw"></i> Create</a></li>
+							<li><a href="${pageContext.request.contextPath }/admin/list"><i class="fa fa-bars fa-fw"></i> List</a></li>
+							<li><a href="${pageContext.request.contextPath }/admin/operate"><i class="fa fa-cog fa-fw"></i> Operate</a></li>
 
 						</ul></li>
 					<li><a href="getAllTeachers.action"><i class="fa fa-user fa-fw"></i> Theachers<span class="fa arrow"></span></a>

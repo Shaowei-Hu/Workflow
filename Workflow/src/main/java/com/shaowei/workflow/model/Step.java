@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 @Entity(name="wkf_workflow")
 public class Step implements Serializable{
 		
@@ -79,6 +81,7 @@ public class Step implements Serializable{
 	public void setId(int id) {
 		this.id = id;
 	}
+	@JsonIgnore
 	public Step getNextStep() {
 		return nextStep;
 	}

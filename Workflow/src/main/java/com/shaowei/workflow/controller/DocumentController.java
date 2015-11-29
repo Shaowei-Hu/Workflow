@@ -10,11 +10,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.shaowei.workflow.exception.CustomGenericException;
 import com.shaowei.workflow.model.Comment;
 import com.shaowei.workflow.model.Decision;
 import com.shaowei.workflow.model.Document;
+import com.shaowei.workflow.model.History;
 import com.shaowei.workflow.model.User;
 import com.shaowei.workflow.service.DocumentService;
 import com.shaowei.workflow.service.UserService;
@@ -106,6 +108,11 @@ public class DocumentController {
 			return "redirect:myList";
 		} else
 			throw new CustomGenericException("500", "Something error document has not been transfered");
+	}
+	
+	@RequestMapping(value="/history/{documentId}")
+	public @ResponseBody List<History> getHistoriesByDocumentId(@PathVariable int documentId){
+		return documentService.getHistoriesByDocumentId(documentId);
 	}
 
 }

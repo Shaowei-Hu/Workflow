@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
+
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 
 @Entity(name="WKF_USER")
@@ -43,15 +46,16 @@ public class User implements Serializable{
 	
 	@Column(name="JOB",length=32)
 	private String job;
+	
 	@ManyToOne
 	@JoinColumn(name="MANAGER_ID")
 	private User manager;
-	@OneToMany(mappedBy="manager")
+	@OneToMany(mappedBy="manager", fetch=FetchType.LAZY)
 	private Set<User> subordinates;
 	@ManyToOne
 	@JoinColumn(name="PARTNER_ID")
 	private User partner;
-	@OneToMany(mappedBy="partner")
+	@OneToMany(mappedBy="partner", fetch=FetchType.LAZY)
 	private Set<User> myPartners;
 	
 	@Transient
@@ -104,24 +108,28 @@ public class User implements Serializable{
 	public void setJob(String job) {
 		this.job = job;
 	}
+	@JsonIgnore
 	public User getManager() {
 		return manager;
 	}
 	public void setManager(User manager) {
 		this.manager = manager;
 	}
+	@JsonIgnore
 	public User getPartner() {
 		return partner;
 	}
 	public void setPartner(User partner) {
 		this.partner = partner;
 	}
+	@JsonIgnore
 	public Set<User> getSubordinates() {
 		return subordinates;
 	}
 	public void setSubordinates(Set<User> subordinates) {
 		this.subordinates = subordinates;
 	}
+	@JsonIgnore
 	public Set<User> getMyPartners() {
 		return myPartners;
 	}

@@ -137,8 +137,9 @@
 		
 	}
 
-	function clickRow(){
-		var thisElement = window.event.srcElement;
+	function clickRow(event){
+		alert(event.target);
+		var thisElement = event.target ||  event.srcElement;
 		window.location.href = thisElement.parentNode.lastChild.firstChild.nodeValue;
 	}
 
