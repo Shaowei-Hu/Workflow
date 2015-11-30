@@ -26,4 +26,21 @@ public class StepDao extends BaseDao<Step>{
 		session.getTransaction().commit();
 		return steps;
 	}
+	
+	public Step getFullStep(int id){
+		Session session = super.getHibernateTemplate().getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		Criteria criteria = session.createCriteria(Step.class);
+		criteria.add(Restrictions.eq("id", id));
+
+		@SuppressWarnings("unchecked")
+		List<Step> steps = criteria.list();
+		Step step = null;
+		if(steps!=null && steps.size()>0){
+			step = steps.get(0);
+			step.getNextStep().getStepName();
+		}
+		session.getTransaction().commit();
+		return step;
+	}
 }

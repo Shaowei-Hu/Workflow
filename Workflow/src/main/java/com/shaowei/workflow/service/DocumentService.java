@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import com.shaowei.workflow.dao.CommentDao;
 import com.shaowei.workflow.dao.DocumentDao;
-import com.shaowei.workflow.dao.StepDao;
 import com.shaowei.workflow.model.Comment;
 import com.shaowei.workflow.model.Decision;
 import com.shaowei.workflow.model.Document;
@@ -25,8 +24,7 @@ public class DocumentService {
 	private DocumentDao documentDao;
 	@Resource
 	private CommentDao commentDao;
-	@Resource
-	private StepDao stepDao;
+
 	@Resource
 	private UserService userService;
 	@Resource
@@ -44,7 +42,7 @@ public class DocumentService {
 			document.setResource(new BigDecimal(resource));
 			document.setAuthor(author);
 			document.setResponsible(author);
-			String currentStep = getStepNameByStepId("01");
+			String currentStep = workflowService.getStepNameByStepId("01");
 			document.setCurrentStep(currentStep);
 			document.setStepDate(new Date());
 
@@ -89,18 +87,11 @@ public class DocumentService {
 		return documentDao.getDocumentByIntervenor(intervenorId);
 	}
 	
-	public String getStepNameByStepId(String stepId){
-		List<Step> steps = stepDao.getStepByStepId(stepId);
-		return stepId + "-" + steps.get(0).getStepName();
-	}
-	
-	public List<Step> getStepsByStepId(String stepId){
-		return stepDao.getStepByStepId(stepId);
-	}
+
 	
 	public List<Step> getStepsByDocument(Document document){
 		String stepId = document.getCurrentStep().split("-")[0];		
-		return getStepsByStepId(stepId);
+		return workflowService.getStepsByStepId(stepId);
 	}
 	
 	public boolean transferDocument(Decision decision){

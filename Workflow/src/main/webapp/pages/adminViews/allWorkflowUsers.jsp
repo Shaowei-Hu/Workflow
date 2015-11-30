@@ -138,9 +138,10 @@
 	}
 
 	function clickRow(event){
-		alert(event.target);
-		var thisElement = event.target ||  event.srcElement;
-		window.location.href = thisElement.parentNode.lastChild.firstChild.nodeValue;
+
+		var thisElement = event.target || event.srcElement;
+		alert(thisElement.parentNode.lastChild.nodeValue);
+		window.location.href = thisElement.parentNode.lastChild.nodeValue;
 	}
 
 

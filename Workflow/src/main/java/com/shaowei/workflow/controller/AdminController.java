@@ -28,5 +28,10 @@ public class AdminController {
 		} else
 			throw new CustomGenericException("100", "Login error");
 	}
+	
+	@RequestMapping(value="getWorkflow")
+	public String getWorkfow(){
+		return "adminViews/showWorkflow";
+	}
 
 }

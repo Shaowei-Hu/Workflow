@@ -211,10 +211,10 @@
 							<li><a href="${pageContext.request.contextPath }/admin/operate"><i class="fa fa-cog fa-fw"></i> Operate</a></li>
 
 						</ul></li>
-					<li><a href="getAllTeachers.action"><i class="fa fa-user fa-fw"></i> Theachers<span class="fa arrow"></span></a>
+					<li><a href="getAllTeachers.action"><i class="glyphicon glyphicon-road"></i> Workflow<span class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
-							<li><a href="getAllTeachersAdminT.action"><i class="fa fa-table fa-fw"></i> Tables</a></li>
-							<li><a href="getAllTeachersAdminG.action"><i class="fa fa-picture-o fa-fw"></i> Graphics</a></li>
+							<li><a href="${pageContext.request.contextPath }/admin/getWorkflow"><i class="glyphicon glyphicon-random"></i> Workflow</a></li>
+							<li><a href="getAllTeachersAdminG.action"><i class="glyphicon glyphicon-list-alt"></i> Steps</a></li>
 
 						</ul></li>
 					<li><a href="getAllUsersdminT.action"><i class="fa fa-group fa-fw"></i> Users</a></li>
