@@ -14,12 +14,20 @@
 </head>
 <body>
 <div id="wrapper">
-<jsp:include page="adminHeader.jsp"></jsp:include>
+<jsp:include page="../adminViews/adminHeader.jsp"></jsp:include>
 
 <div id="page-wrapper">
 	<div class="container">
 	
-	<br> <br><br> <br>
+	<br> <br>
+	
+					<div class="row">
+					<div class="col-lg-12">
+						<h1 class="page-header">Workflow</h1>
+					</div>
+					<!-- /.col-lg-12 -->
+				</div>
+				<!-- /.row -->
 		<button id="plus" type="button" class="btn btn-default">
 			<span class="glyphicon glyphicon-plus"></span>
 		</button>
@@ -35,11 +43,12 @@
 					<th></th>
 					<th>Step Id</th>
 					<th>Step Name</th>
+					<th>Service</th>
 					<th>Phase</th>
 					<th>Decision</th>
 					<th>Next Step Id</th>
 					<th>Condition</th>
-					<th>IntervenorJob</th>
+					
 					<th>Authority</th>
 				</tr>
 			</thead>
@@ -51,11 +60,12 @@
 					<th></th>
 					<th>Step Id</th>
 					<th>Step Name</th>
+					<th>Service</th>
 					<th>Phase</th>
 					<th>Decision</th>
 					<th>Next Step Id</th>
 					<th>Condition</th>
-					<th>IntervenorJob</th>
+					
 					<th>Authority</th>
 				</tr>
 			</tfoot>
@@ -80,30 +90,26 @@
 				if (stepIdFlag != steps[i].step_id) {
 					$("tbody").append(
 							"<tr class='step" + steps[i].step_id
-									+ " clickable' onclick='myToggle(" + steps[i].step_id
+									+ " rowClickable' onclick='myToggle(" + steps[i].step_id
 									+ ")'><td><span class='caret'></span></td><td>"
 									+ steps[i].step_id + "</td><td>"
 									+ steps[i].step_name + "</td><td>"
-									+ steps[i].phase
-									+ "</td><td></td><td></td><td></td><td></td><td></td></tr>");
+									+ steps[i].service
+									+ "</td><td>"+steps[i].phase+"</td><td></td><td></td><td></td><td></td></tr>");
 					$("tbody").append(
 							"<tr class='decision" + parseInt(steps[i].step_id)
-									+ "'><td></td><td></td><td></td><td></td><td>"
+									+ "'><td></td><td></td><td></td><td></td><td></td><td>"
 									+ steps[i].decision + "</td><td>"
 									+ steps[i].next_step_id + "</td><td>"
 									+ steps[i].condition + "</td><td>"
-									
-									+ steps[i].intervenorjob + "</td><td>"
 									+ steps[i].autority + "</td></tr>");
 				} else {
 					$("tbody").append(
 							"<tr class='decision" + parseInt(steps[i].step_id)
-							+ "'><td></td><td></td><td></td><td></td><td>"
+							+ "'><td></td><td></td><td></td><td></td><td></td><td>"
 							+ steps[i].decision + "</td><td>"
 							+ steps[i].next_step_id + "</td><td>"
 							+ steps[i].condition + "</td><td>"
-							
-							+ steps[i].intervenorjob + "</td><td>"
 							+ steps[i].autority + "</td></tr>");
 				}
 				stepIdFlag = steps[i].step_id;

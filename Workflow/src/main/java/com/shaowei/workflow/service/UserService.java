@@ -108,8 +108,8 @@ public class UserService {
 		return userDao.getUserJobByJob(job);
 	}
 	
-	public List<KeyValue> getIntervenorForId(int id){
-		String job = workflowService.getIntervenorJobById(id);
+	public List<KeyValue> getDestionationByStepId(int id){
+		String job = workflowService.getServiceByStepId(id);
 		return getUserJobByJob(job);
 	}
 	

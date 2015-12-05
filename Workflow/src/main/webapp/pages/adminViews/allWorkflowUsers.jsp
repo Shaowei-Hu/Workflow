@@ -140,8 +140,8 @@
 	function clickRow(event){
 
 		var thisElement = event.target || event.srcElement;
-		alert(thisElement.parentNode.lastChild.nodeValue);
-		window.location.href = thisElement.parentNode.lastChild.nodeValue;
+//		alert($(thisElement).parent().children().last().text());
+		window.location.href = $(thisElement).parent().children().last().text();
 	}
 
 

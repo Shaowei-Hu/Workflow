@@ -35,8 +35,8 @@ public class Step implements Serializable{
 	@Column(name="CONDITIONN", length=64)
 	private String condition;
 	
-	@Column(name="INTERVENORJOB", length=32)
-	private String intervonerJob;
+	@Column(name="SERVICE", length=32)
+	private String service;
 	@Column(name="AUTORITY", length=16)
 	private String autority;
 	
@@ -87,6 +87,18 @@ public class Step implements Serializable{
 	}
 	public void setNextStep(Step nextStep) {
 		this.nextStep = nextStep;
+	}
+	public String getService() {
+		return service;
+	}
+	public void setService(String service) {
+		this.service = service;
+	}
+	public String getAutority() {
+		return autority;
+	}
+	public void setAutority(String autority) {
+		this.autority = autority;
 	}
 	
 	

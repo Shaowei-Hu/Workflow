@@ -213,8 +213,8 @@
 						</ul></li>
 					<li><a href="getAllTeachers.action"><i class="glyphicon glyphicon-road"></i> Workflow<span class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
-							<li><a href="${pageContext.request.contextPath }/admin/getWorkflow"><i class="glyphicon glyphicon-random"></i> Workflow</a></li>
-							<li><a href="getAllTeachersAdminG.action"><i class="glyphicon glyphicon-list-alt"></i> Steps</a></li>
+							<li><a href="${pageContext.request.contextPath }/workflow/getWorkflowTable"><i class="glyphicon glyphicon-random"></i> Workflow</a></li>
+							<li><a href="${pageContext.request.contextPath }/workflow/updateWorkflow"><i class="glyphicon glyphicon-list-alt"></i> Steps</a></li>
 
 						</ul></li>
 					<li><a href="getAllUsersdminT.action"><i class="fa fa-group fa-fw"></i> Users</a></li>

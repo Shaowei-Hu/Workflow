@@ -37,9 +37,9 @@ public class UserController {
 			throw new CustomGenericException("100", "Login error");
 	}
 	
-	@RequestMapping(value="/getUserJobByStepID/{id}", method = RequestMethod.GET)
-	public @ResponseBody List<KeyValue> getUserJobByStepID(@PathVariable int id){		
-		return userService.getIntervenorForId(id);
+	@RequestMapping(value="/getDestinationByStepID/{id}", method = RequestMethod.GET)
+	public @ResponseBody List<KeyValue> getDestinationByStepID(@PathVariable int id){		
+		return userService.getDestionationByStepId(id);
 	}
 	
 	@RequestMapping(value = "/welcome", method = RequestMethod.GET)

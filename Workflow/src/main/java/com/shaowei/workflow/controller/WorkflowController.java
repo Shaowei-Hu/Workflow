@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,6 +30,23 @@ public class WorkflowController {
 	@RequestMapping(value="/getWorkflow")
 	public @ResponseBody List<StepSimple> getWorkflow(){
 		return workflowService.getWorkflow();
+	}
+	
+	@RequestMapping(value="/getWorkflowTable")
+	public String getWorkfow(){
+		return "workflowViews/showWorkflow";
+	}
+	
+	@RequestMapping(value="/updateWorkflow")
+	public String updateWorkfow(){
+		return "workflowViews/updateWorkflow";
+	}
+	
+	@RequestMapping(value="/showStep/{stepId}", method = RequestMethod.GET)
+	public String showStep(@PathVariable String stepId, Model model){
+		List<StepSimple> steps = workflowService.getStepSimpleByStepId(stepId);
+		model.addAttribute("steps", steps);
+		return "workflowViews/updateWorkflowStep";
 	}
 
 }

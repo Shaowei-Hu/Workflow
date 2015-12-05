@@ -360,7 +360,7 @@
 	    
 	    $("#decisionSelect").on("change", function() {
 	    	  $("#destinationSelect").empty().append('<option selected="selected" value="0">--Choose destination--</option>');
-		        $.ajax({url: "/Workflow/user/getUserJobByStepID/"+this.value, success: function(result){
+		        $.ajax({url: "/Workflow/user/getDestinationByStepID/"+this.value, success: function(result){
 		        	$.each( result, function( index, value ){
 			        	$("#destinationSelect").append($('<option>', {
 			        	    value: value.keyy,

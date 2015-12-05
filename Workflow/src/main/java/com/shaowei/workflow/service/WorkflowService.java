@@ -24,8 +24,8 @@ public class WorkflowService {
 		return workflowDao.getDecisionByStepId(stepId);
 	}
 	
-	public String getIntervenorJobById(int id){
-		return workflowDao.getIntervenorJobById(id);
+	public String getServiceByStepId(int id){
+		return workflowDao.getServiceById(id);
 	}
 	
 	public Step getFullStepById(int id){
@@ -38,10 +38,16 @@ public class WorkflowService {
 	}
 	
 	public List<Step> getStepsByStepId(String stepId){
+		if(stepId.length()==1) stepId = "0" + stepId;
 		return stepDao.getStepByStepId(stepId);
 	}
 	
 	public List<StepSimple> getWorkflow(){
 		return workflowDao.getWorkflow();
+	}
+	
+	public List<StepSimple> getStepSimpleByStepId(String stepId){
+		if(stepId.length()==1) stepId = "0" + stepId;
+		return workflowDao.getStepSimpleByStepId(stepId);
 	}
 }

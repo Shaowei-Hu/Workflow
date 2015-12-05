@@ -25,7 +25,7 @@ public class StepSimple implements Serializable{
 
 	private String condition;
 	
-	private String intervenorjob;
+	private String service;
 	
 
 	private String autority;
@@ -97,13 +97,15 @@ public class StepSimple implements Serializable{
 		this.next_step_id = next_step_id;
 	}
 
-	public String getIntervenorjob() {
-		return intervenorjob;
+	public String getService() {
+		return service;
 	}
 
-	public void setIntervenorjob(String intervenorjob) {
-		this.intervenorjob = intervenorjob;
+	public void setService(String service) {
+		this.service = service;
 	}
+
+
 	
 	
 

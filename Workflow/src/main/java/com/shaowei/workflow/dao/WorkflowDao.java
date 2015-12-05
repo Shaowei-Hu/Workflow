@@ -24,13 +24,16 @@ public class WorkflowDao{
 		return workflowMapper.getDecisionByStepId(stepId);
 	}
 	
-	public String getIntervenorJobById(int id){
-		return workflowMapper.getIntervenorJobById(id);
+	public String getServiceById(int id){
+		return workflowMapper.getNextServiceById(id);
 	}
 	
 	public List<StepSimple> getWorkflow(){
 		return workflowMapper.getWorkflow();
 	}
 	
+	public List<StepSimple> getStepSimpleByStepId(String stepId){
+		return workflowMapper.getStepSimpleByStepId(stepId);
+	}
 
 }
