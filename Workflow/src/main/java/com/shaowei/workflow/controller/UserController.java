@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.shaowei.workflow.exception.CustomGenericException;
 import com.shaowei.workflow.model.KeyValue;
 import com.shaowei.workflow.model.User;
-import com.shaowei.workflow.service.DocumentService;
+import com.shaowei.workflow.service.DocumentServiceInterface;
 import com.shaowei.workflow.service.UserService;
 
 @Controller
@@ -25,7 +25,7 @@ public class UserController {
 	@Resource
 	UserService userService;
 	@Resource
-	DocumentService documentService;
+	DocumentServiceInterface documentService;
 	
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public String login(@RequestParam("username") String username, @RequestParam("password") String password, HttpServletRequest request) {

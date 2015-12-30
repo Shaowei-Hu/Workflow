@@ -42,7 +42,7 @@
 
 
 		<div id="page-wrapper">
-			<form role="form">
+			<form role="form" action="/Workflow/workflow/updateWorkflow" method="post">
 				<div class="row">
 					<div class="col-lg-12">
 						<h1 class="page-header">Workflow Step</h1>
@@ -61,12 +61,12 @@
 									<fieldset>
 										<div class="col-lg-6">
 											<div class="form-group">
-												<label>Step Id</label> <input class="form-control" name="stepId" value="${steps[0].step_id}">
+												<label>Step Id</label> <input class="form-control" name="stepSimple.stepId" value="${steps[0].step_id}">
 												<p class="help-block">User's name .</p>
 											</div>
 
 											<div class="form-group">
-												<label>Phase</label> <input class="form-control" name="username" value="${steps[0].phase}">
+												<label>Phase</label> <input class="form-control" name="stepSimple.username" value="${steps[0].phase}">
 												<p class="help-block">User's name .</p>
 											</div>
 										</div>
@@ -75,11 +75,11 @@
 
 										<div class="col-lg-6">
 											<div class="form-group">
-												<label>Step Name</label> <input class="form-control" name="stepName" value="${steps[0].step_name}">
+												<label>Step Name</label> <input class="form-control" name="stepSimple.stepName" value="${steps[0].step_name}">
 												<p class="help-block">User's name .</p>
 											</div>
 											<div class="form-group">
-												<label>Service</label> <input class="form-control" name="service" value="${steps[0].service}">
+												<label>Service</label> <input class="form-control" name="stepSimple.service" value="${steps[0].service}">
 												<p class="help-block">Intervoner service .</p>
 											</div>
 										</div>
@@ -116,7 +116,7 @@
 													</div>
 
 													<div class="form-group">
-														<label>Condition</label> <input class="form-control" name="stepName">
+														<label>Condition</label> <input class="form-control" name="condition">
 														<p class="help-block">User's name .</p>
 													</div>
 
@@ -130,7 +130,7 @@
 
 													<div class="form-group">
 														<label for="select">Next Step Id</label>
-														<select id="" class="form-control mySelect">
+														<select id="" class="form-control mySelect" name="nextStep">
 															<option value="${item.next_step_id}">${item.next_step_id}</option>
 														</select>
 														<p class="help-block">The next step which the decision will point to</p>
@@ -162,12 +162,12 @@
 												<div class="col-lg-6">
 
 													<div class="form-group">
-														<label>Decision</label> <input class="form-control" name="stepName">
+														<label>Decision</label> <input class="form-control" name="decision">
 														<p class="help-block">Decision</p>
 													</div>
 
 													<div class="form-group">
-														<label>Condition</label> <input class="form-control" name="stepName">
+														<label>Condition</label> <input class="form-control" name="condition">
 														<p class="help-block">User's name .</p>
 													</div>
 
@@ -180,7 +180,8 @@
 
 
 													<div class="form-group">
-														<label for="select">Next Step</label> <select id="" class="form-control mySelect">
+														<label for="select">Next Step</label>
+														<select id="" class="form-control mySelect" name="nextStep">
 															<option>--Choose next step--</option>
 														</select>
 													</div>

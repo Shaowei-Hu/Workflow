@@ -18,7 +18,7 @@ import com.shaowei.workflow.model.Decision;
 import com.shaowei.workflow.model.Document;
 import com.shaowei.workflow.model.History;
 import com.shaowei.workflow.model.User;
-import com.shaowei.workflow.service.DocumentService;
+import com.shaowei.workflow.service.DocumentServiceInterface;
 import com.shaowei.workflow.service.UserService;
 
 @Controller
@@ -28,7 +28,7 @@ public class DocumentController {
 	@Resource
 	UserService userService;
 	@Resource
-	DocumentService documentService;
+	DocumentServiceInterface documentService;
 	
 
 	@RequestMapping(value="/create", method=RequestMethod.GET)

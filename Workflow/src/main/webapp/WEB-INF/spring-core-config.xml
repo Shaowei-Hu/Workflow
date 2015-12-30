@@ -2,11 +2,17 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="
         http://www.springframework.org/schema/beans     
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context 
-        http://www.springframework.org/schema/context/spring-context.xsd ">
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx 
+        http://www.springframework.org/schema/tx/spring-tx.xsd ">
  
 	<!-- work with Spring Annotation -->
 	<context:annotation-config />
@@ -83,5 +89,37 @@
 		<property name="mapperInterface" value="com.shaowei.workflow.dao.WorkflowMapper" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<tx:advice id="transaction" transaction-manager="transactionManager">
+		<tx:attributes>
+			<!-- 告诉spring容器什么样的目标方法采用什么样的事务策略 
+			name 用来说明目标方法 save* 以save开头的目标方法 
+			isolation 隔离属性 
+			propagation 传播属性 是解决事务嵌套问题的 
+			read-only 为true:只读事务 只能读 为false:读写事务 -->
+			<tx:method name="transferDocument" isolation="DEFAULT" propagation="NESTED" read-only="false" />
+		</tx:attributes>
+	</tx:advice>
+	
+	<aop:config>
+		<aop:pointcut expression="execution(* com.shaowei.workflow.service.AdminService.*(..))" id="adminLogin"/>
+		<aop:pointcut expression="execution(* com.shaowei.workflow.service.DocumentService.transferDocument(..))" id="documentTransaction"/>
+		<aop:advisor advice-ref="transaction" pointcut-ref="documentTransaction"/>
+		<aop:aspect ref="log">
+			<aop:before method="logBefore" pointcut-ref="adminLogin"/>
+			<aop:around method="logAroundLogin" pointcut-ref="adminLogin"/>
+		</aop:aspect>
+		
+	</aop:config>
+
+
+
+
 
 </beans>

@@ -18,7 +18,7 @@ import com.shaowei.workflow.model.Step;
 import com.shaowei.workflow.model.User;
 
 @Service
-public class DocumentService {
+public class DocumentService implements DocumentServiceInterface{
 
 	@Resource
 	private DocumentDao documentDao;
@@ -113,7 +113,7 @@ public class DocumentService {
 			document.setStepDate(transferDate);
 			documentDao.update(document);
 			
-			
+			int i = 1/0;
 			
 			History history = new History();
 			history.setDate(transferDate);

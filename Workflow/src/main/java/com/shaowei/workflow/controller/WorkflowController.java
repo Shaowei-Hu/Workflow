@@ -37,7 +37,7 @@ public class WorkflowController {
 		return "workflowViews/showWorkflow";
 	}
 	
-	@RequestMapping(value="/updateWorkflow")
+	@RequestMapping(value="/updateWorkflow", method = RequestMethod.GET)
 	public String updateWorkfow(){
 		return "workflowViews/updateWorkflow";
 	}
@@ -47,6 +47,15 @@ public class WorkflowController {
 		List<StepSimple> steps = workflowService.getStepSimpleByStepId(stepId);
 		model.addAttribute("steps", steps);
 		return "workflowViews/updateWorkflowStep";
+	}
+	
+	@RequestMapping(value="/updateWorkflow", method = RequestMethod.POST)
+	public String updateWorkfow(StepSimple stepSimple, String[] decision, String[] condition, String[] nextStep){
+		for(String s : nextStep){
+			System.out.println(s);
+		}
+		System.out.println(stepSimple.getStep_id());
+		return "workflowViews/updateWorkflow";
 	}
 
 }

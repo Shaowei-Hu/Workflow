@@ -17,6 +17,7 @@ public class HistoryDao extends BaseDao<History>{
 	}
 	
 	public List<History> getHistoriesByDocument(Document document){
+		
 		Session session = super.getHibernateTemplate().getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		Criteria criteria = session.createCriteria(History.class);
