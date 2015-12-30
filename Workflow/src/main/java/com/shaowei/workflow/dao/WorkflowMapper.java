@@ -17,7 +17,7 @@ public interface WorkflowMapper {
 	 @Select("SELECT SERVICE FROM wkf_workflow WHERE STEP_ID = (SELECT NEXT_STEP_ID FROM wkf_workflow  WHERE ID=#{id}) LIMIT 1")
 	 public String getNextServiceById(int id);
 	 
-	 @Select("SELECT * FROM wkf_workflow")
+	 @Select("SELECT * FROM wkf_workflow ORDER BY STEP_ID")
 	 public List<StepSimple> getWorkflow();
 	 
 	 @Select("SELECT * FROM wkf_workflow WHERE STEP_ID=#{stepId}")

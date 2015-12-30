@@ -103,6 +103,10 @@
     	
     	window.location.href = "/Workflow/workflow/showStep/" + id;
     }
+    
+    $("#plus").click(function(){
+    	window.location.href = "/Workflow/workflow/addWorkflowStep/";
+    });
 
 		
 	</script>

@@ -50,4 +50,58 @@ public class WorkflowService {
 		if(stepId.length()==1) stepId = "0" + stepId;
 		return workflowDao.getStepSimpleByStepId(stepId);
 	}
+	
+	public boolean updateWorkflow(StepSimple stepSimple, String id[], String[] decision, String[] condition, String[] nextStep){
+		for(int i=0; i<id.length; i++ ){
+			String systemId = id[i];
+			if(id!=null&&!"".equals(systemId)){
+				Step step = stepDao.get(Integer.parseInt(systemId));
+				step.setDecision(decision[i]);
+//				step.setCondition(condition[i]);
+//				int nextId = Integer.parseInt(nextStep[i]);
+				Step next = this.getStepsByStepId(nextStep[i]).get(0);
+				step.setNextStep(next);
+				stepDao.update(step);
+			} else {
+				if(nextStep[i].substring(0, 1).equals("-")) continue;
+				Step step = new Step();
+				step.setAutority(stepSimple.getAutority());
+				step.setCondition(condition[i]);
+				step.setDecision(decision[i]);
+				
+				Step next = this.getStepsByStepId(nextStep[i]).get(0);
+				step.setNextStep(next);
+				step.setPhase(stepSimple.getPhase());
+				step.setService(stepSimple.getService());
+				step.setStepId(stepSimple.getStep_id());
+				step.setStepName(stepSimple.getStep_name());
+				stepDao.add(step);
+			}
+
+		}
+		return false;
+	}
+	
+	public boolean addWorkflowStep(StepSimple stepSimple, String id[], String[] decision, String[] condition, String[] nextStep) {
+		for (int i = 0; i < id.length; i++) {
+
+			if (nextStep[i].substring(0, 1).equals("-"))
+				continue;
+			Step step = new Step();
+			step.setAutority(stepSimple.getAutority());
+			step.setCondition(condition[i]);
+			step.setDecision(decision[i]);
+
+			int nextId = Integer.parseInt(nextStep[i]);
+			Step next = stepDao.get(nextId);
+			step.setNextStep(next);
+			step.setPhase(stepSimple.getPhase());
+			step.setService(stepSimple.getService());
+			step.setStepId(stepSimple.getStep_id());
+			step.setStepName(stepSimple.getStep_name());
+			stepDao.add(step);
+
+		}
+		return false;
+	}
 }

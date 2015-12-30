@@ -61,12 +61,12 @@
 									<fieldset>
 										<div class="col-lg-6">
 											<div class="form-group">
-												<label>Step Id</label> <input class="form-control" name="step_id" value="${steps[0].step_id}">
+												<label>Step Id</label> <input class="form-control" name="step_id">
 												<p class="help-block">User's name .</p>
 											</div>
 
 											<div class="form-group">
-												<label>Phase</label> <input class="form-control" name="phase" value="${steps[0].phase}">
+												<label>Phase</label> <input class="form-control" name="phase">
 												<p class="help-block">User's name .</p>
 											</div>
 										</div>
@@ -75,11 +75,11 @@
 
 										<div class="col-lg-6">
 											<div class="form-group">
-												<label>Step Name</label> <input class="form-control" name="step_name" value="${steps[0].step_name}">
+												<label>Step Name</label> <input class="form-control" name="step_name">
 												<p class="help-block">User's name .</p>
 											</div>
 											<div class="form-group">
-												<label>Service</label> <input class="form-control" name="service" value="${steps[0].service}">
+												<label>Service</label> <input class="form-control" name="service">
 												<p class="help-block">Intervoner service .</p>
 											</div>
 										</div>
@@ -96,13 +96,15 @@
 					<!-- /.col-lg-12 -->
 				</div>
 				<!-- /.row -->
-				<c:forEach var="item" items="${steps}">
+
 				
-					<div class="row" id="decision${item.id}">
+								
+				
+					<div class="row" id="decision0">
 						<div class="col-lg-12">
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<span>Decision</span><a href="javascript:deleteDecision(${item.id})"><span class="glyphicon glyphicon-trash pull-right"></span></a>
+									<span>Decision</span><a href="javascript:deleteDecision(0)"><span class="glyphicon glyphicon-trash pull-right"></span></a>
 								</div>
 								<div>
 									<div class="panel-body">
@@ -111,7 +113,7 @@
 												<div class="col-lg-6">
 
 													<div class="form-group">
-														<label>Decision</label> <input class="form-control" name="decision" value="${item.decision}">
+														<label>Decision</label> <input class="form-control" name="decision" ">
 														<p class="help-block">Decision</p>
 													</div>
 
@@ -131,13 +133,13 @@
 													<div class="form-group">
 														<label for="select">Next Step Id</label>
 														<select id="" class="form-control mySelect" name="nextStep">
-															<option value="${item.next_step_id}">${item.next_step_id}</option>
+															<option value="--">--</option>
 														</select>
 														<p class="help-block">The next step which the decision will point to</p>
 													</div>
 													 
 													<div class="form-group">
-														<input type="hidden" class="form-control" name="system" value="${item.id}">		
+														<input type="hidden" class="form-control" name="system">		
 													</div>
 
 												</div>
@@ -150,7 +152,9 @@
 						</div>
 					</div>
 				
-				</c:forEach>
+				
+				
+				
 				
 				<div id="decisions">
 					<div class="row" id="decisionHidden">

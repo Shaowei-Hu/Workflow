@@ -50,12 +50,15 @@ public class WorkflowController {
 	}
 	
 	@RequestMapping(value="/updateWorkflow", method = RequestMethod.POST)
-	public String updateWorkfow(StepSimple stepSimple, String[] decision, String[] condition, String[] nextStep){
-		for(String s : nextStep){
-			System.out.println(s);
-		}
-		System.out.println(stepSimple.getStep_id());
+	public String updateWorkfow(StepSimple stepSimple, String[] system, String[] decision, String[] condition, String[] nextStep){
+
+		workflowService.updateWorkflow(stepSimple, system, decision, condition, nextStep);
 		return "workflowViews/updateWorkflow";
+	}
+	
+	@RequestMapping(value="/addWorkflowStep", method = RequestMethod.GET)
+	public String addWorkfowStep(StepSimple stepSimple, String[] system, String[] decision, String[] condition, String[] nextStep){
+		return "workflowViews/addWorkflowStep";
 	}
 
 }

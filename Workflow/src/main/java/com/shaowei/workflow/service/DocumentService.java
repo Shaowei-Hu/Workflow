@@ -113,7 +113,6 @@ public class DocumentService implements DocumentServiceInterface{
 			document.setStepDate(transferDate);
 			documentDao.update(document);
 			
-			int i = 1/0;
 			
 			History history = new History();
 			history.setDate(transferDate);
