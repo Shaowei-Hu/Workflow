@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="st" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -7,7 +7,7 @@
 
 <head>
 
-<meta charset="utf-8">
+
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
@@ -15,37 +15,7 @@
 
 <title>Admin 2 - Bootstrap Admin Theme</title>
 
-<!-- Bootstrap Core CSS -->
-
-<link href="/Workflow/scriptLibrary/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-
-<!-- DataTables CSS -->
-<link href="/Workflow/scriptLibrary/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
-
-<!-- DataTables Responsive CSS -->
-<link href="/Workflow/scriptLibrary/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
-
-<!-- MetisMenu CSS -->
-<link href="/Workflow/scriptLibrary/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
-
-<!-- Custom Fonts -->
-<link href="/Workflow/styleSheet/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-<!-- Custom CSS -->
-<link href="/Workflow/styleSheet/sb-admin-2.css" rel="stylesheet">
-
-<link href="/Workflow/styleSheet/general.css" rel="stylesheet" type="text/css">
-
-<%-- <link href="<c:url value="/scriptLibrary/bootstrap/css/bootstrap.min.css" />" rel="stylesheet"> --%>
-<link href="/Workflow/styleSheet/styles.css" rel="stylesheet">
-
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+<jsp:include page="/pages/common/importCss.jsp"></jsp:include>
 
 </head>
 
@@ -58,7 +28,7 @@
 
 
 		<div id="page-wrapper">
-
+		<span>&nbsp;</span>
 			<st:form method="post" modelAttribute="user" action="create">
 				<div class="row">
 					<div class="col-lg-12">

@@ -5,16 +5,13 @@
 
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Workflow</title>
-<link href="/Workflow/scriptLibrary/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="/Workflow/styleSheet/sb-admin-2.css" rel="stylesheet">
 
-<link href="/Workflow/styleSheet/general.css" rel="stylesheet" type="text/css">
+<title>Workflow</title>
+<jsp:include page="/pages/common/importCss.jsp"></jsp:include>
 </head>
 <body>
 <div id="wrapper">
-<jsp:include page="../adminViews/adminHeader.jsp"></jsp:include>
+<jsp:include page="/pages/adminViews/adminHeader.jsp"></jsp:include>
 
 <div id="page-wrapper">
 	<div class="container">

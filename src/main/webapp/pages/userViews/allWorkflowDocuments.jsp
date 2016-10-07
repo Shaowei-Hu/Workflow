@@ -6,29 +6,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 
-<meta charset="utf-8">
+
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
 
-<!-- Bootstrap Core CSS -->
-<link href="/Workflow/scriptLibrary/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-
-<!-- DataTables CSS -->
-<link href="/Workflow/scriptLibrary/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
-
-<!-- DataTables Responsive CSS -->
-<link href="/Workflow/scriptLibrary/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
-
-<!-- Custom Fonts -->
-<link href="/Workflow/styleSheet/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-<!-- Custom CSS -->
-<link href="/Workflow/styleSheet/sb-admin-2.css" rel="stylesheet">
-
-<link href="/Workflow/styleSheet/general.css" rel="stylesheet" type="text/css">
+<jsp:include page="/pages/common/importCss.jsp"></jsp:include>
 
 </head>
 <body>
@@ -50,10 +34,10 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<ul class="nav nav-tabs nav-justified">
-						<li><a href="myList"><h5><strong>My Document To Treat</strong></h3></a></li>
-						<li><a href="myintervenedList"><h5><strong>My Document intervened</strong></h3></a></li>
-						<li><a href="#"><h5><strong>Menu 2</strong></h5></a></li>
-						<li><a href="#"><h5><strong>Menu 3</strong></h5></a></li>
+						<li class="h4"><a href="myList"><strong>My Document To Treat</strong></a></li>
+						<li class="h4"><a href="myintervenedList"><strong>My Document intervened</strong></a></li>
+						<li class="h4"><a href="#"><strong>Menu 2</strong></a></li>
+						<li class="h4"><a href="#"><strong>Menu 3</strong></a></li>
 					</ul>
 					<div class="panel panel-default">
 						<div class="panel-heading">DataTables Advanced Tables</div>
@@ -116,7 +100,6 @@
 	</div>
 	<!-- /#page-wrapper -->
 
-	</div>
 	<!-- /#wrapper -->
 
 	<!-- DataTables JavaScript -->

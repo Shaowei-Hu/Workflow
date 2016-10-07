@@ -17,3 +17,7 @@
 	white-space: nowrap;
 	overflow: hidden;
 }
+
+.offsetform {
+	padding-top: -10px;
+}
