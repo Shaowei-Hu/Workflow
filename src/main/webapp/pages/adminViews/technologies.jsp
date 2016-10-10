@@ -20,7 +20,7 @@
 
 <body>
 
-
+<jsp:useBean id="properties" class="com.shaowei.workflow.util.MavenProperties" scope="application" />
 
 	<div id="wrapper">
 
@@ -33,21 +33,21 @@
 				<div class="panel-body">
 					<img alt="Java" src="${pageContext.request.contextPath }/images/java.PNG" height="88" height="120">
 				</div>
-				<div class="panel-footer">Java 1.7</div>
+				<div class="panel-footer">Java <c:out value="${properties.javaVersion}"/></div>
 			</div>
 			
 			<div class="panel panel-default col-lg-3">
 				<div class="panel-body">
 					<img alt="Spring" src="${pageContext.request.contextPath }/images/spring.PNG" height="88" height="120">
 				</div>
-				<div class="panel-footer">Spring</div>
+				<div class="panel-footer">Spring <c:out value="${properties.springVersion}"/></div>
 			</div>
 			
 			<div class="panel panel-default col-lg-3">
 				<div class="panel-body">
 					<img alt="Hibernate" src="${pageContext.request.contextPath }/images/hibernate.PNG" height="88" height="120">
 				</div>
-				<div class="panel-footer">Hibernate</div>
+				<div class="panel-footer">Hibernate <c:out value="${properties.hibernateVersion}"/></div>
 			</div>
 			
 			<div class="panel panel-default col-lg-3">
