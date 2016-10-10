@@ -29,5 +29,10 @@ public class AdminController {
 			throw new CustomGenericException("100", "Login error");
 	}
 	
+	@RequestMapping(value="/technologies", method = RequestMethod.GET)
+	public String showTechnologies(){
+		return "adminViews/technologies";		
+	}
+	
 
 }

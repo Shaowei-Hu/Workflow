@@ -3,10 +3,10 @@
 	<div id="wrapper">
 
 		<!-- Navigation -->
-		<nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+		<nav class="navbar navbar-default navbar-fixed-top" data-role="navigation" style="margin-bottom: 0">
 		<jsp:include page="/pages/common/horizontalBar.jsp"></jsp:include>
 
-		<div class="navbar-default sidebar" role="navigation">
+		<div class="navbar-default sidebar" data-role="navigation">
 			<div class="sidebar-nav navbar-collapse">
 				<ul class="nav" id="side-menu">
 

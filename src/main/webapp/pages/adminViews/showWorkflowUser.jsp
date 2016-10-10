@@ -20,11 +20,11 @@
 
 <body>
 
-	<jsp:include page="adminHeader.jsp"></jsp:include>
+	
 	<div id="wrapper">
 
 		<!-- Navigation -->
-
+<jsp:include page="adminHeader.jsp"></jsp:include>
 
 		<div id="page-wrapper">
 

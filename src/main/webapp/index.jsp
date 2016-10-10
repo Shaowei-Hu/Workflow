@@ -19,11 +19,11 @@
 	</head>
 	<body>
 <!--login modal-->
-<div id="loginModal" class="modal show" tabindex="-1" role="dialog" aria-hidden="true">
+<div id="loginModal" class="modal show" tabindex="-1" data-role="dialog" data-aria-hidden="true">
   <div class="modal-dialog">
   <div class="modal-content">
       <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <button type="button" class="close" data-dismiss="modal" data-aria-hidden="true">×</button>
           <h1 class="text-center">Login</h1>
       </div>
       
@@ -46,7 +46,7 @@
       
       <div class="modal-footer">
           <div class="col-md-12">
-          <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+          <button class="btn" data-dismiss="modal" data-aria-hidden="true">Cancel</button>
 		  </div>	
       </div>
   </div>

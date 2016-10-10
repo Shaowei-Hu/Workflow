@@ -13,6 +13,7 @@
 
 	<mvc:resources mapping="/scriptLibrary/**" location="/scriptLibrary/" />
 	<mvc:resources mapping="/styleSheet/**" location="/styleSheet/" />
+	<mvc:resources mapping="/images/**" location="/images/" />
 
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
